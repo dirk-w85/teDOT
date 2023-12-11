@@ -1,0 +1,35 @@
+---
+title: Customer X - PoV Setup
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#FB7C32"
+#    primaryTextColor: "#ffffff"
+---
+flowchart LR
+Proxy1("Proxy <br> 10.0.1.1")
+Proxy2("Proxy <br> 165.178.10.12")
+A1((("EA1")))
+A2((("EA2")))
+A3((("EA3")))
+A4((("EA4")))
+Platform["ThousandEyes Platform"]
+
+A1 -----> Platform
+A2 ---> Proxy1 ---> Platform
+A3 ---> Proxy2 ---> Platform
+A4 ---> Proxy2 ---> Platform
+
+subgraph Stuttgart
+    A1
+    A2
+    end
+
+subgraph Berlin
+    A3
+    A4
+    end
+
+subgraph Platform EU
+    Platform
+    end
