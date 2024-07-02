@@ -1,157 +1,111 @@
 {
     "test": [
         {
-            "createdDate": "2024-06-25 09:37:18",
-            "modifiedDate": "2024-06-25 09:49:16",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-06-24 08:47:27",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976770663,
-            "testName": "Webex - lrabb - EMEA - Video - 9000",
-            "type": "agent-to-agent",
-            "interval": 60,
+            "testId": 281474976770201,
+            "testName": "NCP_Gateway_A",
+            "type": "agent-to-server",
+            "interval": 600,
             "subinterval": -1,
-            "port": 9000,
-            "protocol": "UDP",
+            "server": "185.187.245.25:443",
+            "protocol": "TCP",
+            "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
-            "mtuMeasurements": 1,
+            "mtuMeasurements": 0,
+            "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "throughputMeasurements": 0,
-            "dscpId": 34,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "targetAgentId": 404341,
-            "throughputDuration": 10000,
-            "direction": "TO_TARGET",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770663"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770663"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770663"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770663"
-                }
-            ],
-            "dscp": "AF 41 (DSCP 34)"
-        },
-        {
-            "createdDate": "2024-06-28 08:33:42",
-            "modifiedDate": "2024-07-01 13:21:30",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976771901,
-            "testName": "Skype Frontend TCP/5067",
-            "type": "agent-to-server",
-            "interval": 60,
-            "subinterval": -1,
-            "server": "10.172.58.40:5067",
-            "protocol": "TCP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 0,
-            "usePublicBgp": 0,
-            "dscpId": 0,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "pingPayloadSize": -1,
-            "probeMode": "SYN",
-            "continuousMode": 1,
-            "pathTraceMode": "inSession",
-            "numPathTraces": 3,
-            "fixedPacketRate": 1,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771901"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771901"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771901"
-                }
-            ],
-            "dscp": "Best Effort (DSCP 0)"
-        },
-        {
-            "createdDate": "2024-07-01 13:26:37",
-            "modifiedDate": "2024-07-01 13:41:56",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976772940,
-            "testName": "Skype SBC - Audiocodes01 tcp/5066",
-            "type": "agent-to-server",
-            "interval": 60,
-            "subinterval": -1,
-            "server": "10.175.168.34:5066",
-            "protocol": "TCP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 0,
-            "usePublicBgp": 0,
             "dscpId": 0,
             "alertsEnabled": 1,
             "liveShare": 0,
             "pingPayloadSize": -1,
-            "probeMode": "SYN",
-            "continuousMode": 1,
+            "probeMode": "AUTO",
+            "continuousMode": 0,
             "pathTraceMode": "classic",
+            "description": "Testing network connection to ASA NCP GW",
             "numPathTraces": 3,
-            "fixedPacketRate": 1,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976772940"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976770201"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976772940"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770201"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976772940"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770201"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770201"
                 }
             ],
             "dscp": "Best Effort (DSCP 0)"
         },
         {
-            "createdDate": "2024-06-25 09:48:47",
-            "modifiedDate": "2024-06-25 09:50:35",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-06-24 08:48:34",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976770673,
-            "testName": "VPN GW C1 - tcp/113",
+            "testId": 281474976770202,
+            "testName": "NCP_Gateway_B",
             "type": "agent-to-server",
-            "interval": 120,
+            "interval": 300,
             "subinterval": -1,
-            "server": "194.0.93.94:113",
+            "server": "88.217.236.204:443",
             "protocol": "TCP",
+            "ipv6Policy": "USE_AGENT_POLICY",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 0,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "dscpId": 0,
+            "alertsEnabled": 1,
+            "liveShare": 0,
+            "pingPayloadSize": -1,
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "description": "Testing network connection to ASA NCP GW B",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976770202"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770202"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770202"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770202"
+                }
+            ],
+            "dscp": "Best Effort (DSCP 0)"
+        },
+        {
+            "createdDate": "2024-06-27 09:08:37",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976771482,
+            "testName": "Netskope - PoP - IAD2",
+            "type": "agent-to-server",
+            "interval": 300,
+            "subinterval": -1,
+            "server": "163.116.146.38",
+            "protocol": "ICMP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
             "mtuMeasurements": 1,
@@ -164,40 +118,41 @@
             "pingPayloadSize": -1,
             "probeMode": "AUTO",
             "continuousMode": 0,
-            "pathTraceMode": "inSession",
+            "pathTraceMode": "classic",
+            "description": "Washington",
             "numPathTraces": 3,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770673"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976771482"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770673"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771482"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770673"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771482"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770673"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771482"
                 }
             ],
             "dscp": "Best Effort (DSCP 0)"
         },
         {
-            "createdDate": "2024-06-25 09:50:57",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-06-27 08:53:46",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976770677,
-            "testName": "VPN GW C2 - tcp/113",
+            "testId": 281474976771472,
+            "testName": "Netskope - PoP - MRS1",
             "type": "agent-to-server",
-            "interval": 120,
+            "interval": 300,
             "subinterval": -1,
-            "server": "194.0.93.95:113",
-            "protocol": "TCP",
+            "server": "163.116.174.36",
+            "protocol": "ICMP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
             "mtuMeasurements": 1,
@@ -210,41 +165,92 @@
             "pingPayloadSize": -1,
             "probeMode": "AUTO",
             "continuousMode": 0,
-            "pathTraceMode": "inSession",
+            "pathTraceMode": "classic",
+            "description": "Marseille",
             "numPathTraces": 3,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770677"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976771472"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770677"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771472"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770677"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771472"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770677"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771472"
                 }
             ],
             "dscp": "Best Effort (DSCP 0)"
         },
         {
-            "createdDate": "2024-06-25 09:39:16",
-            "modifiedDate": "2024-06-25 10:20:30",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-06-27 09:01:49",
+            "modifiedDate": "2024-06-27 09:07:42",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976770667,
-            "testName": "LRABB - DNS",
+            "testId": 281474976771479,
+            "testName": "Netskope - PoP - ORD1",
+            "type": "agent-to-server",
+            "interval": 300,
+            "subinterval": -1,
+            "server": "163.116.133.38",
+            "protocol": "ICMP",
+            "ipv6Policy": "USE_AGENT_POLICY",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "dscpId": 0,
+            "alertsEnabled": 0,
+            "liveShare": 0,
+            "pingPayloadSize": -1,
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "description": "Chicago",
+            "numPathTraces": 3,
+            "fixedPacketRate": 50,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976771479"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771479"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771479"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771479"
+                }
+            ],
+            "dscp": "Best Effort (DSCP 0)"
+        },
+        {
+            "createdDate": "2024-06-20 09:40:53",
+            "modifiedDate": "2024-06-27 08:10:05",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976768994,
+            "testName": "ASA_ServiceNow - airbus.service-now.com - DNS",
             "type": "dns-server",
-            "interval": 900,
+            "interval": 600,
             "subinterval": -1,
-            "domain": "www.lrabb.de A",
+            "domain": "airbus.service-now.com A",
             "dnsQueryClass": "IN",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
@@ -252,63 +258,99 @@
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "alertsEnabled": 0,
+            "alertsEnabled": 1,
             "liveShare": 0,
             "recursiveQueries": 1,
             "probeMode": "AUTO",
             "continuousMode": 0,
-            "pathTraceMode": "inSession",
+            "pathTraceMode": "classic",
             "dnsServers": [
                 {
-                    "serverId": 281474976734036,
-                    "serverName": "k1z01s003.kivbf.de."
+                    "serverId": 281474976716909,
+                    "serverName": "eur6.akam.net."
                 },
                 {
-                    "serverId": 281474976734037,
-                    "serverName": "k1z01s004.kivbf.de."
+                    "serverId": 281474976716910,
+                    "serverName": "usw1.akam.net."
                 },
                 {
-                    "serverId": 281474976734038,
-                    "serverName": "ns.frei.net."
+                    "serverId": 281474976716912,
+                    "serverName": "usc4.akam.net."
+                },
+                {
+                    "serverId": 281474976716916,
+                    "serverName": "aus1.akam.net."
+                },
+                {
+                    "serverId": 281474976716919,
+                    "serverName": "use1.akam.net."
+                },
+                {
+                    "serverId": 281474976724540,
+                    "serverName": "edns140.ultradns.net."
+                },
+                {
+                    "serverId": 281474976724541,
+                    "serverName": "edns140.ultradns.org."
+                },
+                {
+                    "serverId": 281474976724542,
+                    "serverName": "ns1-234.akam.net."
+                },
+                {
+                    "serverId": 281474976724543,
+                    "serverName": "use3.akam.net."
+                },
+                {
+                    "serverId": 281474976724544,
+                    "serverName": "edns140.ultradns.com."
+                },
+                {
+                    "serverId": 281474976724545,
+                    "serverName": "edns140.ultradns.biz."
+                },
+                {
+                    "serverId": 281474976724546,
+                    "serverName": "ns1-98.akam.net."
                 }
             ],
             "numPathTraces": 1,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770667"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976768994"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976770667"
+                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976768994"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770667"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976768994"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770667"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976768994"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770667"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976768994"
                 }
             ]
         },
         {
-            "createdDate": "2024-06-25 09:37:18",
-            "modifiedDate": "2024-06-25 09:49:11",
+            "createdDate": "2024-05-24 09:07:47",
+            "modifiedDate": "2024-05-24 09:29:54",
             "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "modifiedBy": "ThousandEyes (support@thousandeyes.com)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976770664,
-            "testName": "Webex - lrabb - DNS",
+            "testId": 281474976764520,
+            "testName": "GMail Mail DNS",
             "type": "dns-server",
-            "interval": 900,
+            "interval": 300,
             "subinterval": -1,
-            "domain": "lrabb.webex.com CNAME",
+            "domain": "mail.google.com A",
             "dnsQueryClass": "IN",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
@@ -316,7 +358,7 @@
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "alertsEnabled": 0,
+            "alertsEnabled": 1,
             "liveShare": 0,
             "recursiveQueries": 0,
             "probeMode": "AUTO",
@@ -324,49 +366,59 @@
             "pathTraceMode": "classic",
             "dnsServers": [
                 {
-                    "serverId": 281474976711397,
-                    "serverName": "ns1.as13445.net."
+                    "serverId": 281474976710661,
+                    "serverName": "ns3.google.com."
                 },
                 {
-                    "serverId": 281474976711398,
-                    "serverName": "ns2.as13445.net."
+                    "serverId": 281474976710662,
+                    "serverName": "ns4.google.com."
+                },
+                {
+                    "serverId": 281474976710663,
+                    "serverName": "ns2.google.com."
+                },
+                {
+                    "serverId": 281474976710664,
+                    "serverName": "ns1.google.com."
                 }
             ],
             "numPathTraces": 1,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770664"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976764520"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976770664"
+                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976764520"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770664"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976764520"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770664"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976764520"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770664"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976764520"
                 }
             ]
         },
         {
-            "createdDate": "2024-06-28 08:15:06",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-05-24 09:07:09",
+            "modifiedDate": "2024-05-24 09:30:11",
+            "createdBy": "ThousandEyes (support@thousandeyes.com)",
+            "modifiedBy": "ThousandEyes (support@thousandeyes.com)",
             "enabled": 1,
-            "savedEvent": 1,
-            "testId": 281474976771879,
-            "testName": "LRABB - DNS",
+            "savedEvent": 0,
+            "testId": 281474976764518,
+            "testName": "Goolgle Meet - DNS",
             "type": "dns-server",
-            "interval": 900,
+            "interval": 300,
             "subinterval": -1,
-            "domain": "www.lrabb.de A",
+            "domain": "meet.google.com A",
             "dnsQueryClass": "IN",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
@@ -374,64 +426,68 @@
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "alertsEnabled": 0,
+            "alertsEnabled": 1,
             "liveShare": 0,
-            "recursiveQueries": 1,
+            "recursiveQueries": 0,
             "probeMode": "AUTO",
             "continuousMode": 0,
-            "pathTraceMode": "inSession",
+            "pathTraceMode": "classic",
             "dnsServers": [
                 {
-                    "serverId": 281474976734036,
-                    "serverName": "k1z01s003.kivbf.de."
+                    "serverId": 281474976710661,
+                    "serverName": "ns3.google.com."
                 },
                 {
-                    "serverId": 281474976734037,
-                    "serverName": "k1z01s004.kivbf.de."
+                    "serverId": 281474976710662,
+                    "serverName": "ns4.google.com."
                 },
                 {
-                    "serverId": 281474976734038,
-                    "serverName": "ns.frei.net."
+                    "serverId": 281474976710663,
+                    "serverName": "ns2.google.com."
+                },
+                {
+                    "serverId": 281474976710664,
+                    "serverName": "ns1.google.com."
                 }
             ],
             "numPathTraces": 1,
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771879"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976764518"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976771879"
+                    "href": "https://api.thousandeyes.com/v6/dns/server/281474976764518"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771879"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976764518"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771879"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976764518"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771879"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976764518"
                 }
             ]
         },
         {
-            "createdDate": "2024-06-28 08:13:08",
-            "modifiedDate": "2024-07-01 13:20:08",
-            "createdBy": "Albert Dieringer (A.Dieringer@lrabb.de)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
+            "createdDate": "2024-01-09 08:14:58",
+            "modifiedDate": "2024-06-21 14:51:56",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 0,
             "savedEvent": 0,
-            "testId": 281474976771877,
-            "testName": "https://lrabb-er.rexx-systems.com/",
+            "testId": 281474976742591,
+            "testName": "Airbus Aerostructures Website",
             "type": "http-server",
-            "interval": 120,
+            "interval": 300,
             "subinterval": -1,
             "flagOverrideAgentProxy": 0,
-            "url": "https://lrabb-er.rexx-systems.com/",
+            "url": "https://www.airbus.com/en/airbus-aerostructures",
             "protocol": "TCP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
@@ -439,7 +495,7 @@
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "alertsEnabled": 1,
+            "alertsEnabled": 0,
             "liveShare": 0,
             "httpTimeLimit": 5,
             "httpTargetTime": 1000,
@@ -451,7 +507,7 @@
             "allowUnsafeLegacyRenegotiation": 1,
             "authType": "NONE",
             "contentRegex": "",
-            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.70 Safari/537.36 Edg/80.0.100.0",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
             "probeMode": "AUTO",
             "continuousMode": 0,
             "pathTraceMode": "classic",
@@ -459,41 +515,41 @@
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771877"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976742591"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771877"
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976742591"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771877"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976742591"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771877"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976742591"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771877"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976742591"
                 }
             ],
             "sslVersion": "Auto"
         },
         {
-            "createdDate": "2024-06-28 08:32:35",
-            "modifiedDate": "2024-06-28 08:34:18",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-03-01 14:40:34",
+            "modifiedDate": "2024-05-24 09:05:45",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "ThousandEyes (support@thousandeyes.com)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976771900,
-            "testName": "Skype Frontend - Srvsfb01",
+            "testId": 281474976752274,
+            "testName": "Airbus Proxy",
             "type": "http-server",
             "interval": 120,
             "subinterval": -1,
             "flagOverrideAgentProxy": 1,
-            "url": "https://10.172.58.40",
+            "url": "http://10.45.24.157:8080",
             "protocol": "TCP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
@@ -508,11 +564,12 @@
             "httpVersion": 2,
             "followRedirects": 1,
             "sslVersionId": 0,
-            "verifyCertificate": 0,
+            "verifyCertificate": 1,
             "useNtlm": 0,
             "allowUnsafeLegacyRenegotiation": 1,
             "authType": "NONE",
             "contentRegex": "",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.100.0",
             "desiredStatusCode": "403",
             "probeMode": "AUTO",
             "continuousMode": 0,
@@ -521,43 +578,45 @@
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771900"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976752274"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771900"
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976752274"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771900"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976752274"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771900"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976752274"
                 }
             ],
             "sslVersion": "Auto"
         },
         {
-            "createdDate": "2024-06-28 08:43:21",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "createdDate": "2024-06-21 14:10:37",
+            "modifiedDate": "2024-06-21 14:15:59",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
             "enabled": 1,
             "savedEvent": 0,
-            "testId": 281474976771903,
-            "testName": "Skype Frontend - Srvsfb02",
+            "testId": 281474976769548,
+            "testName": "ASA_DEX_internal",
             "type": "http-server",
-            "interval": 120,
+            "interval": 600,
             "subinterval": -1,
-            "flagOverrideAgentProxy": 1,
-            "url": "https://10.172.58.41",
+            "flagOverrideAgentProxy": 0,
+            "url": "https://10.45.12.12",
             "protocol": "TCP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
-            "mtuMeasurements": 1,
+            "mtuMeasurements": 0,
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 0,
             "usePublicBgp": 0,
-            "alertsEnabled": 0,
+            "alertsEnabled": 1,
             "liveShare": 0,
             "httpTimeLimit": 5,
             "httpTargetTime": 1000,
@@ -569,7 +628,65 @@
             "allowUnsafeLegacyRenegotiation": 1,
             "authType": "NONE",
             "contentRegex": "",
-            "desiredStatusCode": "403",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "description": "Internal IP of DEX",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976769548"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976769548"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976769548"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976769548"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-01-09 08:44:16",
+            "modifiedDate": "2024-06-21 14:50:44",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 0,
+            "savedEvent": 0,
+            "testId": 281474976742594,
+            "testName": "https://supplier.premium-aerotec.com",
+            "type": "http-server",
+            "interval": 300,
+            "subinterval": -1,
+            "flagOverrideAgentProxy": 0,
+            "url": "https://supplier.premium-aerotec.com",
+            "protocol": "TCP",
+            "ipv6Policy": "USE_AGENT_POLICY",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 0,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "followRedirects": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
             "probeMode": "AUTO",
             "continuousMode": 0,
             "pathTraceMode": "classic",
@@ -577,57 +694,420 @@
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771903"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976742594"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771903"
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976742594"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771903"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976742594"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771903"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976742594"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976742594"
                 }
             ],
             "sslVersion": "Auto"
         },
         {
-            "createdDate": "2024-06-28 08:37:00",
-            "modifiedDate": "2024-07-01 13:24:14",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
+            "createdDate": "2024-01-09 08:16:05",
+            "modifiedDate": "2024-06-21 14:50:50",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 0,
             "savedEvent": 0,
-            "testId": 281474976771902,
-            "testName": "Skype SBC - Audiocodes01",
+            "testId": 281474976742592,
+            "testName": "Premium Aerotec",
             "type": "http-server",
-            "interval": 120,
+            "interval": 300,
             "subinterval": -1,
-            "flagOverrideAgentProxy": 1,
-            "url": "https://10.175.168.34",
+            "flagOverrideAgentProxy": 0,
+            "url": "https://www.premium-aerotec.com",
             "protocol": "TCP",
             "ipv6Policy": "USE_AGENT_POLICY",
             "networkMeasurements": 1,
             "mtuMeasurements": 1,
             "bandwidthMeasurements": 0,
-            "bgpMeasurements": 0,
-            "usePublicBgp": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
             "alertsEnabled": 0,
             "liveShare": 0,
             "httpTimeLimit": 5,
             "httpTargetTime": 1000,
             "httpVersion": 2,
             "followRedirects": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976742592"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976742592"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976742592"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976742592"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976742592"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-01-09 08:19:34",
+            "modifiedDate": "2024-06-14 09:17:17",
+            "createdBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976742593,
+            "testName": "Premium Aerotec - Dataexchange",
+            "type": "http-server",
+            "interval": 300,
+            "subinterval": -1,
+            "flagOverrideAgentProxy": 0,
+            "url": "https://dataexchange.premium-aerotec.com",
+            "protocol": "TCP",
+            "ipv6Policy": "USE_AGENT_POLICY",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 0,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "followRedirects": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976742593"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976742593"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976742593"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976742593"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976742593"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-06-20 09:40:50",
+            "modifiedDate": "2024-06-27 08:13:00",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
+            "modifiedBy": "Dirk Woellhaf (dwoellha+airbus@cisco.com)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976768993,
+            "testName": "ASA_ServiceNow - airbus.service-now.com - Web",
+            "type": "page-load",
+            "interval": 600,
+            "httpInterval": 600,
+            "flagOverrideAgentProxy": 0,
+            "emulatedDeviceId": 281474976710656,
+            "url": "https://airbus.service-now.com",
+            "protocol": "TCP",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 1,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "pageLoadTimeLimit": 10,
+            "pageLoadTargetTime": 6,
+            "followRedirects": 1,
+            "includeHeaders": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "identifyAgentTrafficWithUserAgent": 0,
+            "blockDomains": "",
+            "disableScreenshot": 0,
+            "allowMicAndCamera": 0,
+            "allowGeolocation": 0,
+            "pageLoadingStrategy": "normal",
+            "browserLanguage": "en-US",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976768993"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976768993"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976768993"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976768993"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976768993"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976768993"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-05-24 09:07:44",
+            "modifiedDate": "2024-05-24 09:13:38",
+            "createdBy": "ThousandEyes (support@thousandeyes.com)",
+            "modifiedBy": "ThousandEyes (support@thousandeyes.com)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976764519,
+            "testName": "GMail Mail",
+            "type": "page-load",
+            "interval": 300,
+            "httpInterval": 300,
+            "flagOverrideAgentProxy": 0,
+            "emulatedDeviceId": 281474976710656,
+            "url": "https://mail.google.com",
+            "protocol": "TCP",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 1,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "pageLoadTimeLimit": 10,
+            "pageLoadTargetTime": 6,
+            "followRedirects": 1,
+            "includeHeaders": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "identifyAgentTrafficWithUserAgent": 0,
+            "blockDomains": "",
+            "disableScreenshot": 0,
+            "allowMicAndCamera": 0,
+            "allowGeolocation": 0,
+            "pageLoadingStrategy": "normal",
+            "browserLanguage": "en-US",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976764519"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976764519"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976764519"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976764519"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976764519"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976764519"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-05-24 09:07:06",
+            "modifiedDate": "2024-06-14 09:15:26",
+            "createdBy": "ThousandEyes (support@thousandeyes.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976764517,
+            "testName": "Goolgle Meet - Web",
+            "type": "page-load",
+            "interval": 300,
+            "httpInterval": 300,
+            "flagOverrideAgentProxy": 0,
+            "emulatedDeviceId": 281474976710656,
+            "url": "https://meet.google.com",
+            "protocol": "TCP",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 1,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 1,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "pageLoadTimeLimit": 10,
+            "pageLoadTargetTime": 6,
+            "followRedirects": 1,
+            "includeHeaders": 1,
+            "sslVersionId": 0,
+            "verifyCertificate": 1,
+            "useNtlm": 0,
+            "allowUnsafeLegacyRenegotiation": 1,
+            "authType": "NONE",
+            "contentRegex": "",
+            "identifyAgentTrafficWithUserAgent": 0,
+            "blockDomains": "",
+            "disableScreenshot": 0,
+            "allowMicAndCamera": 0,
+            "allowGeolocation": 0,
+            "pageLoadingStrategy": "normal",
+            "browserLanguage": "en-US",
+            "probeMode": "AUTO",
+            "continuousMode": 0,
+            "pathTraceMode": "classic",
+            "numPathTraces": 3,
+            "apiLinks": [
+                {
+                    "rel": "self",
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976764517"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976764517"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976764517"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976764517"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976764517"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976764517"
+                }
+            ],
+            "sslVersion": "Auto"
+        },
+        {
+            "createdDate": "2024-06-21 10:45:06",
+            "modifiedDate": "2024-06-21 12:32:53",
+            "createdBy": "Christian Attinger (attinger@netz16.de)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
+            "enabled": 1,
+            "savedEvent": 0,
+            "testId": 281474976769486,
+            "testName": "PLM Prod",
+            "type": "page-load",
+            "interval": 600,
+            "httpInterval": 600,
+            "flagOverrideAgentProxy": 0,
+            "emulatedDeviceId": 281474976710658,
+            "url": "https://plmprod.de.pa.corp/",
+            "protocol": "TCP",
+            "networkMeasurements": 1,
+            "mtuMeasurements": 0,
+            "bandwidthMeasurements": 0,
+            "bgpMeasurements": 1,
+            "usePublicBgp": 1,
+            "alertsEnabled": 1,
+            "liveShare": 0,
+            "httpTimeLimit": 5,
+            "httpTargetTime": 1000,
+            "httpVersion": 2,
+            "pageLoadTimeLimit": 10,
+            "pageLoadTargetTime": 6,
+            "followRedirects": 1,
+            "includeHeaders": 1,
             "sslVersionId": 0,
             "verifyCertificate": 0,
             "useNtlm": 0,
             "allowUnsafeLegacyRenegotiation": 1,
             "authType": "NONE",
             "contentRegex": "",
-            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.70 Safari/537.36 Edg/80.0.100.0",
+            "identifyAgentTrafficWithUserAgent": 0,
+            "clientCertificate": "",
+            "blockDomains": "",
+            "disableScreenshot": 0,
+            "allowMicAndCamera": 0,
+            "allowGeolocation": 0,
+            "pageLoadingStrategy": "normal",
+            "browserLanguage": "en-US",
             "probeMode": "AUTO",
             "continuousMode": 0,
             "pathTraceMode": "classic",
@@ -635,308 +1115,75 @@
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771902"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976769486"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771902"
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976769486"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771902"
+                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976769486"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771902"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976769486"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976769486"
+                },
+                {
+                    "rel": "data",
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976769486"
                 }
             ],
             "sslVersion": "Auto"
         },
         {
-            "createdDate": "2024-06-25 08:39:04",
-            "modifiedDate": "2024-06-25 09:51:17",
+            "createdDate": "2024-05-24 09:22:10",
+            "modifiedDate": "2024-06-21 14:51:42",
             "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
+            "modifiedBy": "Christian Attinger (attinger@netz16.de)",
             "enabled": 0,
             "savedEvent": 0,
-            "testId": 281474976770622,
-            "testName": "VPN GW C1",
-            "type": "http-server",
+            "testId": 281474976764525,
+            "testName": "GMail Transaction",
+            "type": "web-transactions",
             "interval": 120,
-            "subinterval": -1,
             "flagOverrideAgentProxy": 0,
-            "url": "https://194.0.93.94:4343",
-            "protocol": "TCP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "followRedirects": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "inSession",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770622"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770622"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770622"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770622"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770622"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 08:43:52",
-            "modifiedDate": "2024-06-25 09:51:21",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 0,
-            "savedEvent": 0,
-            "testId": 281474976770624,
-            "testName": "VPN GW C2",
-            "type": "http-server",
-            "interval": 120,
-            "subinterval": -1,
-            "flagOverrideAgentProxy": 0,
-            "url": "https://194.0.93.95:4343",
-            "protocol": "TCP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "followRedirects": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "inSession",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770624"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770624"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770624"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770624"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770624"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 09:37:18",
-            "modifiedDate": "2024-06-25 09:49:25",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770662,
-            "testName": "Webex - lrabb - Server",
-            "type": "http-server",
-            "interval": 60,
-            "subinterval": -1,
-            "flagOverrideAgentProxy": 0,
-            "url": "https://lrabb.webex.com",
-            "protocol": "ICMP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "followRedirects": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770662"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770662"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770662"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770662"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770662"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-28 07:19:39",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 1,
-            "testId": 281474976771846,
-            "testName": "Webex - lrabb - Server",
-            "type": "http-server",
-            "interval": 60,
-            "subinterval": -1,
-            "flagOverrideAgentProxy": 0,
-            "url": "https://lrabb.webex.com",
-            "protocol": "ICMP",
-            "ipv6Policy": "USE_AGENT_POLICY",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "followRedirects": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771846"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771846"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771846"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771846"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771846"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 08:46:00",
-            "modifiedDate": "2024-07-02 06:23:07",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770626,
-            "testName": "LRABB - Website - https://www.lrabb.de",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://www.lrabb.de",
+            "emulatedDeviceId": 281474976710658,
+            "url": "https://mail.google.com",
             "protocol": "TCP",
             "networkMeasurements": 1,
             "mtuMeasurements": 1,
             "bandwidthMeasurements": 0,
             "bgpMeasurements": 1,
             "usePublicBgp": 1,
-            "alertsEnabled": 1,
+            "alertsEnabled": 0,
             "liveShare": 0,
+            "timeLimit": 30,
+            "targetTime": 10,
             "httpTimeLimit": 5,
             "httpTargetTime": 1000,
             "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
             "followRedirects": 1,
             "includeHeaders": 1,
             "sslVersionId": 0,
-            "verifyCertificate": 1,
+            "verifyCertificate": 0,
             "useNtlm": 0,
             "allowUnsafeLegacyRenegotiation": 1,
             "authType": "NONE",
             "contentRegex": "",
             "identifyAgentTrafficWithUserAgent": 0,
+            "transactionScript": "import { By, Key } from 'selenium-webdriver';\nimport { driver, test, credentials } from 'thousandeyes';\n\nrunScript();\n\nasync function runScript() {\n\n  await configureDriver();\n\n  const settings = test.getSettings();\n\n  // Load page\n  await driver.get(settings.url);\n\n\n\n\n  // Click on 'Email or phone'\n  await click(By.id(`identifierId`));\n\n  await typeText('3.test@premium-aerotec.com', By.id(`identifierId`));\n  await driver.takeScreenshot();\n\n  // Click on 'Next'\n  await click(By.css(`[data-idom-class=\"nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b\"] > .VfPpkd-vQzf8d`));\n\n  await typeText('3.test@premium-aerotec.com', By.id(`username`));\n\n  await driver.takeScreenshot();\n\n  // Click on 'Continue'\n  await click(By.css(`[data-reactid=\".0.0.1.0.2.1.0.2.0.0\"]`));\n\n  await typeText(credentials.get('SommerWinter2024!'), By.id(`password`));\n\n  // Click on 'Continue'\n  await click(By.css(`[data-reactid=\".0.0.1.0.2.1.0.3.0.0.0\"]`));\n\n\n  await driver.takeScreenshot();\n\n}\n\nasync function configureDriver() {\n  await driver.manage().setTimeouts({\n    implicit: 7 * 1000 // If an element is not found, reattempt for this many milliseconds\n  });\n}\n\nasync function typeText(value, selector) {\n  await simulateHumanDelay();\n  const element = await driver.findElement(selector);\n  await element.clear();\n  await element.sendKeys(value);\n}\n\nasync function simulateHumanDelay() {\n  await driver.sleep(550);\n}\n\nasync function click(selector) {\n  await simulateHumanDelay();\n\n  const configuredTimeouts = await driver.manage().getTimeouts();\n  const clickAttemptEndTime = Date.now() + configuredTimeouts.implicit;\n\n  await reattemptUntil(attemptToClick, clickAttemptEndTime);\n\n  async function attemptToClick() {\n    await driver.findElement(selector).\n    click();\n  }\n}\n\nasync function reattemptUntil(attemptActionFn, attemptEndTime) {\n  const TIME_BETWEEN_ATTEMPTS = 100;\n  let numberOfAttempts = 0;\n  let attemptError;\n  while (Date.now() < attemptEndTime || numberOfAttempts === 0) {\n    try {\n      numberOfAttempts += 1;\n      await attemptActionFn();\n    }\n    catch (error) {\n      attemptError = error;\n      await driver.sleep(TIME_BETWEEN_ATTEMPTS);\n      continue; // Attempt failed, reattempt\n    }\n    attemptError = null;\n    break; // Attempt succeeded, stop attempting\n  }\n\n  const wasAttemptSuccessful = !attemptError;\n  if (!wasAttemptSuccessful) {\n    throw attemptError;\n  }\n}",
             "blockDomains": "",
             "disableScreenshot": 0,
             "allowMicAndCamera": 0,
             "allowGeolocation": 0,
             "pageLoadingStrategy": "normal",
             "browserLanguage": "en-US",
+            "isApi": 0,
             "probeMode": "AUTO",
             "continuousMode": 0,
             "pathTraceMode": "classic",
@@ -944,441 +1191,30 @@
             "apiLinks": [
                 {
                     "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/tests/281474976764525"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976764525"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/web/web-transactions/281474976764525"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976764525"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976764525"
                 },
                 {
                     "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770626"
+                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976764525"
                 }
             ],
             "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 12:15:13",
-            "modifiedDate": "2024-07-02 06:23:36",
-            "createdBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "modifiedBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770751,
-            "testName": "LRABB Service B\u00fcrgerinfo",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://service.lrabb.de/bi",
-            "protocol": "TCP",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 1,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
-            "followRedirects": 1,
-            "includeHeaders": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "identifyAgentTrafficWithUserAgent": 0,
-            "blockDomains": "",
-            "disableScreenshot": 0,
-            "allowMicAndCamera": 0,
-            "allowGeolocation": 0,
-            "pageLoadingStrategy": "normal",
-            "browserLanguage": "en-US",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770751"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770751"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976770751"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770751"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770751"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770751"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 12:16:01",
-            "modifiedDate": "2024-07-02 06:22:50",
-            "createdBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "modifiedBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770752,
-            "testName": "LRABB Service Ratsinfo",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://service.lrabb.de/ri",
-            "protocol": "TCP",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 1,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
-            "followRedirects": 1,
-            "includeHeaders": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "identifyAgentTrafficWithUserAgent": 0,
-            "blockDomains": "",
-            "disableScreenshot": 0,
-            "allowMicAndCamera": 0,
-            "allowGeolocation": 0,
-            "pageLoadingStrategy": "normal",
-            "browserLanguage": "en-US",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770752"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770752"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976770752"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770752"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770752"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770752"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 12:07:43",
-            "modifiedDate": "2024-07-02 06:23:49",
-            "createdBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "modifiedBy": "Patrick Strohm (P.Strohm@lrabb.de)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770750,
-            "testName": "LRABB Service Teststellenmeldung",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://teststellenmeldung.lrabb.de:39000/",
-            "protocol": "TCP",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 1,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
-            "followRedirects": 1,
-            "includeHeaders": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "identifyAgentTrafficWithUserAgent": 0,
-            "blockDomains": "",
-            "disableScreenshot": 0,
-            "allowMicAndCamera": 0,
-            "allowGeolocation": 0,
-            "pageLoadingStrategy": "normal",
-            "browserLanguage": "en-US",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770750"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770750"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976770750"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770750"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770750"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770750"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 13:38:05",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 1,
-            "testId": 281474976770791,
-            "testName": "LRABB - Website - https://www.lrabb.de",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://www.lrabb.de",
-            "protocol": "TCP",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
-            "followRedirects": 1,
-            "includeHeaders": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "identifyAgentTrafficWithUserAgent": 0,
-            "blockDomains": "",
-            "disableScreenshot": 0,
-            "allowMicAndCamera": 0,
-            "allowGeolocation": 0,
-            "pageLoadingStrategy": "normal",
-            "browserLanguage": "en-US",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770791"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976770791"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976770791"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976770791"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976770791"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770791"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-26 10:07:57",
-            "createdBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 1,
-            "testId": 281474976771141,
-            "testName": "LRABB - Website - https://www.lrabb.de",
-            "type": "page-load",
-            "interval": 300,
-            "httpInterval": 300,
-            "flagOverrideAgentProxy": 0,
-            "emulatedDeviceId": 281474976710656,
-            "url": "https://www.lrabb.de",
-            "protocol": "TCP",
-            "networkMeasurements": 1,
-            "mtuMeasurements": 1,
-            "bandwidthMeasurements": 0,
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "httpTimeLimit": 5,
-            "httpTargetTime": 1000,
-            "httpVersion": 2,
-            "pageLoadTimeLimit": 10,
-            "pageLoadTargetTime": 6,
-            "followRedirects": 1,
-            "includeHeaders": 1,
-            "sslVersionId": 0,
-            "verifyCertificate": 1,
-            "useNtlm": 0,
-            "allowUnsafeLegacyRenegotiation": 1,
-            "authType": "NONE",
-            "contentRegex": "",
-            "identifyAgentTrafficWithUserAgent": 0,
-            "blockDomains": "",
-            "disableScreenshot": 0,
-            "allowMicAndCamera": 0,
-            "allowGeolocation": 0,
-            "pageLoadingStrategy": "normal",
-            "browserLanguage": "en-US",
-            "probeMode": "AUTO",
-            "continuousMode": 0,
-            "pathTraceMode": "classic",
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976771141"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/http-server/281474976771141"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/web/page-load/281474976771141"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/metrics/281474976771141"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/path-vis/281474976771141"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976771141"
-                }
-            ],
-            "sslVersion": "Auto"
-        },
-        {
-            "createdDate": "2024-06-25 09:37:18",
-            "modifiedDate": "2024-06-25 09:49:20",
-            "createdBy": "ThousandEyes (support@thousandeyes.com)",
-            "modifiedBy": "Dirk Woellhaf (dwoellha+bb@cisco.com)",
-            "enabled": 1,
-            "savedEvent": 0,
-            "testId": 281474976770665,
-            "testName": "Webex - lrabb - EMEA - Voice - 9000",
-            "type": "voice",
-            "interval": 60,
-            "subinterval": -1,
-            "server": "vps5-fra01.webex.ag1.thousandeyes.com:9000",
-            "bgpMeasurements": 1,
-            "usePublicBgp": 1,
-            "duration": 5,
-            "codec": "G.711 @ 64 Kbps",
-            "codecId": 0,
-            "dscpId": 46,
-            "jitterBuffer": 40,
-            "alertsEnabled": 0,
-            "liveShare": 0,
-            "targetAgentId": 404341,
-            "numPathTraces": 3,
-            "apiLinks": [
-                {
-                    "rel": "self",
-                    "href": "https://api.thousandeyes.com/v6/tests/281474976770665"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/voice/rtp-stream/281474976770665"
-                },
-                {
-                    "rel": "data",
-                    "href": "https://api.thousandeyes.com/v6/net/bgp-metrics/281474976770665"
-                }
-            ],
-            "dscp": "EF (DSCP 46)"
         }
     ]
 }

@@ -23,3 +23,18 @@ GET https://api.thousandeyes.com/v7/usage
 Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
 Content-Type: application/json
 Accept: application/json
+
+
+
+### GET Labes
+GET https://api.thousandeyes.com/v7/labels?expand=true
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
+
+
+### GET Labes Details
+GET https://api.thousandeyes.com/v6/groups/281474976724421
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json

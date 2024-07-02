@@ -1,10 +1,12 @@
 import requests
 import json
+import sys
 
 # Replace these with your actual ThousandEyes API credentials and API endpoint
 API_URL = 'https://api.thousandeyes.com/v6/tests.json'
 API_TOKEN = '01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b'
 API_TOKEN = '01ab-b8d1cea2-17e2-4f94-884a-5b500739905f'
+API_TOKEN = sys.argv[1]
 
 def get_thousandeyes_test_configuration():
     headers = {
@@ -88,7 +90,7 @@ def generate_mermaid_diagram(test_config):
             test_name = test['testName']
 #            mermaid_lines.append(f"{test_id}({test_name}\nType: {test['type']}) --> {test_destination(test)}")
 #            mermaid_lines.append(f"{test_id}({test_name}) -..-> {test_destination(test)}")
-            mermaid_lines.append(f"{test_id}(<b>{test_name}</b><br>Target: {test_destination(test)})")
+            mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
 
             test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
