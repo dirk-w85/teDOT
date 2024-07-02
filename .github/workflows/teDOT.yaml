@@ -1,0 +1,15 @@
+name: Servicefinder
+on: 
+  workflow_dispatch:
+    inputs: 
+      token: 
+        required: false
+        type: string
+        description: "Domain to investigate (like cisco.com)"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run the Code and add Tests to ThousandEyes
+      run: python3 teDOT.py
