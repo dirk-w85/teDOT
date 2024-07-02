@@ -61,7 +61,6 @@ def get_thousandeyes_usage():
         print(f"Error: {response.status_code}")
         return None
 
-
 def test_destination(test):
     if test["type"] == "agent-to-server":
         return test["server"]
