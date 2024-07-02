@@ -1,0 +1,25 @@
+### Get Tests
+GET https://api.thousandeyes.com/v6/tests/281474976770663
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
+
+
+### GET Account
+GET https://api.thousandeyes.com/v7/account-groups
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
+
+
+### GET A2A Test
+GET https://api.thousandeyes.com/v6/tests/281474976770663
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
+
+### GET Usage
+GET https://api.thousandeyes.com/v7/usage
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
