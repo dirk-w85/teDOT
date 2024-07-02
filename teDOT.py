@@ -88,7 +88,7 @@ def generate_mermaid_diagram(test_config):
             test_name = test['testName']
 #            mermaid_lines.append(f"{test_id}({test_name}\nType: {test['type']}) --> {test_destination(test)}")
 #            mermaid_lines.append(f"{test_id}({test_name}) -..-> {test_destination(test)}")
-            mermaid_lines.append(f"<b>{test_id}({test_name}</b><br>Target: {test_destination(test)})")
+            mermaid_lines.append(f"{test_id}(<b>{test_name}</b><br>Target: {test_destination(test)})")
 
             test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
