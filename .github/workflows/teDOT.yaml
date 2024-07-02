@@ -1,4 +1,4 @@
-name: Servicefinder
+name: teDOT
 on: 
   workflow_dispatch:
     inputs: 
@@ -11,5 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    - run: pip install requests
     - name: Run the Code and add Tests to ThousandEyes
       run: python3 teDOT.py
