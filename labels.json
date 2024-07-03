@@ -1,69 +1,9 @@
 {
     "groups": [
         {
-            "name": "Network Health Overview",
-            "groupId": 281474976724425,
-            "type": "tests",
-            "builtin": 0
-        },
-        {
-            "name": "Cloud",
-            "groupId": -2,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
-            "name": "Single Homed",
-            "groupId": -7,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
-            "name": "Webex Cloud",
-            "groupId": -12,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
-            "name": "OnVIA-VPN",
-            "groupId": 422212465073319,
-            "type": "endpoint_agents",
-            "builtin": 0
-        },
-        {
-            "name": "IPv6 Compatible",
-            "groupId": -4,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
-            "name": "LRABB Services",
-            "groupId": 281474976724430,
-            "type": "tests",
-            "builtin": 0
-        },
-        {
-            "name": "OnRemoteAccessVPN",
-            "groupId": 422212465073318,
-            "type": "endpoint_agents",
-            "builtin": 0
-        },
-        {
             "name": "Webex Video Tests",
             "groupId": 281474976724422,
             "type": "tests",
-            "builtin": 0
-        },
-        {
-            "name": "Dual Chromium",
-            "groupId": -85,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
-            "name": "LRABB_CloudAgents",
-            "groupId": 281474976724408,
-            "type": "agents",
             "builtin": 0
         },
         {
@@ -74,20 +14,50 @@
             "color": "#A7EB10"
         },
         {
-            "name": "Use-Case_Home-Office",
-            "groupId": 281474976724414,
+            "name": "OnRemoteAccessVPN",
+            "groupId": 422212465073318,
+            "type": "endpoint_agents",
+            "builtin": 0
+        },
+        {
+            "name": "LRABB Services",
+            "groupId": 281474976724430,
             "type": "tests",
             "builtin": 0
         },
         {
-            "name": "Webex",
-            "groupId": 281474976724423,
-            "type": "tests",
-            "builtin": 0
+            "name": "IPv4 Compatible",
+            "groupId": -3,
+            "type": "agents",
+            "builtin": 1
+        },
+        {
+            "name": "Enterprise Cluster",
+            "groupId": -6,
+            "type": "agents",
+            "builtin": 1
         },
         {
             "name": "Proxied",
             "groupId": -5,
+            "type": "agents",
+            "builtin": 1
+        },
+        {
+            "name": "LRABB_CloudAgents",
+            "groupId": 281474976724408,
+            "type": "agents",
+            "builtin": 0
+        },
+        {
+            "name": "Network Health Overview",
+            "groupId": 281474976724425,
+            "type": "tests",
+            "builtin": 0
+        },
+        {
+            "name": "Enterprise",
+            "groupId": -1,
             "type": "agents",
             "builtin": 1
         },
@@ -104,19 +74,6 @@
             "builtin": 0
         },
         {
-            "name": "LRABB - Website",
-            "groupId": 281474976724419,
-            "type": "endpoint_tests",
-            "builtin": 0,
-            "color": "#A7EB10"
-        },
-        {
-            "name": "Enterprise",
-            "groupId": -1,
-            "type": "agents",
-            "builtin": 1
-        },
-        {
             "name": "Scheduled Test Saved Event",
             "groupId": -10,
             "type": "endpoint_tests",
@@ -124,15 +81,14 @@
             "color": "#A7EB10"
         },
         {
-            "name": "Webex",
-            "groupId": 281474976724420,
-            "type": "endpoint_tests",
-            "builtin": 0,
-            "color": "#A7EB10"
+            "name": "Use-Case_Home-Office",
+            "groupId": 281474976724414,
+            "type": "tests",
+            "builtin": 0
         },
         {
-            "name": "IPv4 Compatible",
-            "groupId": -3,
+            "name": "IPv6 Compatible",
+            "groupId": -4,
             "type": "agents",
             "builtin": 1
         },
@@ -143,9 +99,21 @@
             "builtin": 1
         },
         {
+            "name": "Dual Chromium",
+            "groupId": -85,
+            "type": "agents",
+            "builtin": 1
+        },
+        {
             "name": "Webex Voice Tests",
             "groupId": 281474976724421,
             "type": "tests",
+            "builtin": 0
+        },
+        {
+            "name": "OnVIA-VPN",
+            "groupId": 422212465073319,
+            "type": "endpoint_agents",
             "builtin": 0
         },
         {
@@ -155,8 +123,40 @@
             "builtin": 1
         },
         {
-            "name": "Enterprise Cluster",
-            "groupId": -6,
+            "name": "Webex",
+            "groupId": 281474976724420,
+            "type": "endpoint_tests",
+            "builtin": 0,
+            "color": "#A7EB10"
+        },
+        {
+            "name": "Single Homed",
+            "groupId": -7,
+            "type": "agents",
+            "builtin": 1
+        },
+        {
+            "name": "Webex",
+            "groupId": 281474976724423,
+            "type": "tests",
+            "builtin": 0
+        },
+        {
+            "name": "Webex Cloud",
+            "groupId": -12,
+            "type": "agents",
+            "builtin": 1
+        },
+        {
+            "name": "LRABB - Website",
+            "groupId": 281474976724419,
+            "type": "endpoint_tests",
+            "builtin": 0,
+            "color": "#A7EB10"
+        },
+        {
+            "name": "Cloud",
+            "groupId": -2,
             "type": "agents",
             "builtin": 1
         }

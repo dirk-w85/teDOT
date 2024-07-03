@@ -110,22 +110,17 @@ def generate_mermaid_diagram(test_config, label):
     mermaid_lines.append("flowchart LR")
 
     labelDetails = get_thousandeyes_label_details(label["groupId"])
-    #print(labelDetails["groups"]["tests"])
 
     for test in labelDetails["groups"][0]["tests"]:
-#        if test["type"] == "dns-server":
+        if test["enabled"] == 1:
             test_id = test['testId']
             test_name = test['testName']
-#            mermaid_lines.append(f"{test_id}({test_name}\nType: {test['type']}) --> {test_destination(test)}")
-#            mermaid_lines.append(f"{test_id}({test_name}) -..-> {test_destination(test)}")
             mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
 
             test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
 
             for agent in test_agents["test"][0]["agents"]:
-                #print("Agents")
-                #for agent in test['agents']:
                 agent_id = agent['agentId']
                 agent_name = agent['agentName']
                 mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --> {test_id}')
@@ -152,17 +147,17 @@ if labels:
         if label["type"] == "tests" and label["builtin"] == 0:
 #            print(label["groupId"]) 
 #            print(label["name"])
-            print(f'\n##### Label: {label["name"]} - START #####')
+            print(f'\n\n##### START - Label: {label["name"]} - START #####')
             mermaid_diagram = generate_mermaid_diagram(test_config, label)
 
             print(mermaid_diagram)
 
-            print(f'##### Label: {label["name"]} - END #####')
+            print(f'##### END - Label: {label["name"]} - END #####')
 
 
 
-    with open('labels.json', 'w') as f:
-        json.dump(labels, f, indent=4)
+#    with open('labels.json', 'w') as f:
+#        json.dump(labels, f, indent=4)
 #    print("Test configuration saved to test_config.json")
 
     # Step 2: Generate the Mermaid Diagram
@@ -174,5 +169,6 @@ if labels:
 #        f.write(mermaid_diagram)
 
 #    print("Mermaid diagram saved to mermaid_diagram.md")
+    print(" ")
 else:
     print("Failed to retrieve test configuration")

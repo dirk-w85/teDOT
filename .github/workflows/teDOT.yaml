@@ -2,10 +2,10 @@ name: teDOT
 on: 
   workflow_dispatch:
     inputs: 
-      token: 
+      teToken: 
         required: false
         type: string
-        description: "Domain to investigate (like cisco.com)"
+        description: "ThousandEyes Oauth Token"
 
 jobs:
   build:
@@ -18,4 +18,4 @@ jobs:
         cache: 'pip'
     - run: pip install requests
     - name: Run the Code and add Tests to ThousandEyes
-      run: python3 teDOT.py
+      run: python3 teDOTbyLabel.py ${{ inouts.teToken }}
