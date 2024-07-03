@@ -18,4 +18,4 @@ jobs:
         cache: 'pip'
     - run: pip install requests
     - name: Run the Code and add Tests to ThousandEyes
-      run: python3 teDOTbyLabel.py ${{ inputs.teToken }}
+      run: python3 teDOTbyLabels.py ${{ inputs.teToken }}
