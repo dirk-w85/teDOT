@@ -107,6 +107,15 @@ def test_destination(test):
 
 def test_target(test, mermaid_lines):
 #    print(test)
+    if test["type"] == "agent-to-server":
+        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']}<br>DSCP: {test['dscpId']} --> {test['testId']}_server([{test['server']}])")
+
+    if test["type"] == "agent-to-agent":
+        #print(test)
+        resp = get_thousandeyes_test_agents("https://api.thousandeyes.com/v7/agents/"+str(test['targetAgentId']))
+        targetAgent = resp["agentName"]
+        mermaid_lines.append(f'{test["testId"]} --Trace: {test["pathTraceMode"]}<br>Protocol: {test["protocol"]}/{test["port"]}<br>DSCP: {test["dscpId"]} --> {test["testId"]}_agent(["{targetAgent}"])')
+
     if test["type"] == "dns-server":
         test_dnsServers = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
         for dnsServer in test_dnsServers["test"][0]["dnsServers"]:
@@ -115,7 +124,8 @@ def test_target(test, mermaid_lines):
             mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}--> {dnsServer_id}([{dnsServer_name}])")
 
     if test["type"] == "http-server" or test["type"] == "page-load" :
-        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}--> {test['testId']}_url([{test['url']}])")
+        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}])")
+        
 
     return mermaid_lines
 
@@ -131,7 +141,7 @@ def generate_mermaid_diagram(test_config, label):
             test_name = test['testName']
 #            mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
             
-            mermaid_lines.append(f"{test_id}({test_name}<br>Type: {test['type']})")
+            mermaid_lines.append(f"{test_id}({test_name}<br>Type: {test['type']}, Interval: {test['interval']}s)")
 
             test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
@@ -139,7 +149,7 @@ def generate_mermaid_diagram(test_config, label):
             for agent in test_agents["test"][0]["agents"]:
                 agent_id = agent['agentId']
                 agent_name = agent['agentName']
-                mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --> {test_id}')
+                mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --- {test_id}')
 
             mermaid_lines = test_target(test,mermaid_lines)
             

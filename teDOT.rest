@@ -11,6 +11,11 @@ Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
 Content-Type: application/json
 Accept: application/json
 
+### GET Agents
+GET https://api.thousandeyes.com/v7/agents/404341
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
 
 ### GET A2A Test
 GET https://api.thousandeyes.com/v6/tests/281474976770663
