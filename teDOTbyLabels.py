@@ -103,7 +103,21 @@ def test_destination(test):
     if test["type"] == "http-server" or test["type"] == "page-load" :
         return test["url"]
 
-    return "server"
+    return "NA"
+
+def test_target(test, mermaid_lines):
+#    print(test)
+    if test["type"] == "dns-server":
+        test_dnsServers = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
+        for dnsServer in test_dnsServers["test"][0]["dnsServers"]:
+            dnsServer_id = dnsServer['serverId']
+            dnsServer_name = dnsServer['serverName']
+            mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}--> {dnsServer_id}([{dnsServer_name}])")
+
+    if test["type"] == "http-server" or test["type"] == "page-load" :
+        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}--> {test['testId']}_url([{test['url']}])")
+
+    return mermaid_lines
 
 def generate_mermaid_diagram(test_config, label):
     mermaid_lines = ["---", "title: "+label["name"],"config:","  theme: base","  themeVariables:","    primaryColor: '#00ff00'", "---"]
@@ -115,7 +129,9 @@ def generate_mermaid_diagram(test_config, label):
         if test["enabled"] == 1:
             test_id = test['testId']
             test_name = test['testName']
-            mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
+#            mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
+            
+            mermaid_lines.append(f"{test_id}({test_name}<br>Type: {test['type']})")
 
             test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
@@ -124,13 +140,9 @@ def generate_mermaid_diagram(test_config, label):
                 agent_id = agent['agentId']
                 agent_name = agent['agentName']
                 mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --> {test_id}')
-        
-            if test["type"] == "dns-server":
-                test_dnsServers = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
-                for dnsServer in test_dnsServers["test"][0]["dnsServers"]:
-                    dnsServer_id = dnsServer['serverId']
-                    dnsServer_name = dnsServer['serverName']
-                    mermaid_lines.append(f"{test_id} --> {dnsServer_id}([{dnsServer_name}])")
+
+            mermaid_lines = test_target(test,mermaid_lines)
+            
 
 #    mermaid_lines.append(get_thousandeyes_usage())
     mermaid_lines.append("classDef teAgent fill:#f96")
