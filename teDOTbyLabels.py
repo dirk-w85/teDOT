@@ -158,7 +158,7 @@ def generate_mermaid_diagram(test_config, label):
                 mermaid_lines.append(f'{test_id}("{test_name}"<br>Type: {test["type"]}, Interval: {test["interval"]}s)')
 
                 test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
-
+#
 
                 for agent in test_agents["test"][0]["agents"]:
                     agent_id = agent['agentId']
