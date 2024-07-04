@@ -8,14 +8,19 @@ on:
         description: "ThousandEyes Oauth Token"
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - name: Checkout current Code
+      uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    - run: pip install requests
-    - name: Run the Code and add Tests to ThousandEyes
+    - name: Install Dependencies
+      run: pip install requests
+    - name: Create Mermaid Code
       run: python3 teDOTbyLabels.py ${{ inputs.teToken }}
+    - name: Go to Mermaid
+      run: echo "https://mermaid.live/" && echo "https://mermaid.live/"
