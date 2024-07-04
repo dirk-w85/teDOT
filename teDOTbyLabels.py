@@ -169,7 +169,7 @@ def generate_mermaid_diagram(test_config, label):
 
 
 #        mermaid_lines.append(get_thousandeyes_usage())
-        mermaid_lines.append("classDef teAgent fill:#f96")
+        mermaid_lines.append("classDef teAgent fill:#f80")
 
 
 
