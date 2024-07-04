@@ -129,37 +129,51 @@ def test_target(test, mermaid_lines):
 
     return mermaid_lines
 
+def supported_tests(test):
+    supportedTests = ["agent-to-server","agent-to-agent","dns-server","http-server","page-load"]
+
+    if test["enabled"] == 0:
+        return False
+    else:
+        if test["type"] in supportedTests:
+            return True
+        else:
+            print(f'Test Type {test["type"]} not yet suppored')
+            return False
+
 def generate_mermaid_diagram(test_config, label):
     mermaid_lines = ["---", "title: "+label["name"],"config:","  theme: base","  themeVariables:","    primaryColor: '#00ff00'", "---"]
     mermaid_lines.append("flowchart LR")
 
     labelDetails = get_thousandeyes_label_details(label["groupId"])
 
-    for test in labelDetails["groups"][0]["tests"]:
-        if test["enabled"] == 1:
-            test_id = test['testId']
-            test_name = test['testName']
-#            mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
-            
-            mermaid_lines.append(f"{test_id}({test_name}<br>Type: {test['type']}, Interval: {test['interval']}s)")
+#    try:
+    if "tests" in labelDetails["groups"][0]:
+        for test in labelDetails["groups"][0]["tests"]:
+            if supported_tests(test):
+                test_id = test['testId']
+                test_name = test['testName']
+#                mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
+#                print(test)
+                mermaid_lines.append(f"{test_id}({test_name}<br>Type: {test['type']}, Interval: {test['interval']}s)")
 
-            test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
+                test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
 
 
-            for agent in test_agents["test"][0]["agents"]:
-                agent_id = agent['agentId']
-                agent_name = agent['agentName']
-                mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --- {test_id}')
+                for agent in test_agents["test"][0]["agents"]:
+                    agent_id = agent['agentId']
+                    agent_name = agent['agentName']
+                    mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --- {test_id}')
 
-            mermaid_lines = test_target(test,mermaid_lines)
-            
+                mermaid_lines = test_target(test,mermaid_lines)
 
-#    mermaid_lines.append(get_thousandeyes_usage())
-    mermaid_lines.append("classDef teAgent fill:#f96")
 
-            
-    
-    return "\n".join(mermaid_lines)
+#        mermaid_lines.append(get_thousandeyes_usage())
+        mermaid_lines.append("classDef teAgent fill:#f96")
+
+
+
+        return "\n".join(mermaid_lines)
 
 # Step 1: Retrieve the ThousandEyes Test Configuration
 test_config = get_thousandeyes_test_configuration()
