@@ -175,6 +175,8 @@ def generate_mermaid_diagram(test_config, label):
 
         return "\n".join(mermaid_lines)
 
+# Step 0: Welcome Message
+print("\nWelcome! Please wait while we create your Mermaid Code...")
 # Step 1: Retrieve the ThousandEyes Test Configuration
 test_config = get_thousandeyes_test_configuration()
 labels = get_thousandeyes_labels()
@@ -186,7 +188,12 @@ if labels:
             print(f'\n\n##### START - Label: {label["name"]} - START #####')
             mermaid_diagram = generate_mermaid_diagram(test_config, label)
 
-            print(mermaid_diagram)
+            print(mermaid_diagram) 
+            with open('mermaid_diagram.md', 'a') as f:
+                f.write(f'\n\n##### START - Label: {label["name"]} - START #####')
+                f.write(mermaid_diagram+"\n\n")
+                f.write(f'##### END - Label: {label["name"]} - END #####')
+                
 
             print(f'##### END - Label: {label["name"]} - END #####')
 
