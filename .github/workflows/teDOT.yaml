@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Checkout current Code
       uses: actions/checkout@v4
+
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
@@ -20,7 +21,15 @@ jobs:
         cache: 'pip'
     - name: Install Dependencies
       run: pip install requests
+
     - name: Create Mermaid Code
       run: python3 teDOTbyLabels.py ${{ inputs.teToken }}
+
     - name: Go to Mermaid, Excalidraw or Draw.io
       run: echo "https://mermaid.live/" && echo "https://excalidraw.com/" && echo "https://app.diagrams.net/"
+
+    - name: Upload Executable as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: mermaid_diagram
+        path: mermaid_diagram.md

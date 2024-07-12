@@ -42,7 +42,7 @@ def get_thousandeyes_test_configuration():
     else:
         print(f"Error: {response.status_code}")
         return None
-#.
+#...
 
 def get_thousandeyes_test_agents(url):
     #print(url)
@@ -161,9 +161,15 @@ def generate_mermaid_diagram(test_config, label):
 #.
 
                 for agent in test_agents["test"][0]["agents"]:
+#                    print(agent)
                     agent_id = agent['agentId']
                     agent_name = agent['agentName']
-                    mermaid_lines.append(f'{agent_id}(["{agent_name}"]):::teAgent --- {test_id}')
+                    agent_type = agent['agentType']
+                    if agent_type == "Enterprise":
+                        agent_ip = "<br>IP: "+agent["ipAddresses"][0]
+                    else:
+                        agent_ip = ""
+                    mermaid_lines.append(f'{agent_id}(["{agent_name}{agent_ip}<br>({agent_type} Agent)"]):::teAgent --- {test_id}')
 
                 mermaid_lines = test_target(test,mermaid_lines)
 
@@ -175,6 +181,8 @@ def generate_mermaid_diagram(test_config, label):
 
         return "\n".join(mermaid_lines)
 
+# Step 0: Welcome Message
+print("\nWelcome! Please wait while we create your Mermaid Code...")
 # Step 1: Retrieve the ThousandEyes Test Configuration
 test_config = get_thousandeyes_test_configuration()
 labels = get_thousandeyes_labels()
@@ -186,25 +194,15 @@ if labels:
             print(f'\n\n##### START - Label: {label["name"]} - START #####')
             mermaid_diagram = generate_mermaid_diagram(test_config, label)
 
-            print(mermaid_diagram)
+            print(mermaid_diagram) 
+            with open('mermaid_diagram.md', 'a') as f:
+                f.write(f'\n##### START - Label: {label["name"]} - START #####\n')
+                f.write(mermaid_diagram+"\n\n")
+                f.write(f'##### END - Label: {label["name"]} - END #####\n')
+                
 
             print(f'##### END - Label: {label["name"]} - END #####')
 
-
-
-#    with open('labels.json', 'w') as f:
-#        json.dump(labels, f, indent=4)
-#    print("Test configuration saved to test_config.json")
-
-    # Step 2: Generate the Mermaid Diagram
-#    mermaid_diagram = generate_mermaid_diagram(test_config)
-    
-    # Step 3: Output the Diagram
-#    print(mermaid_diagram)
-#    with open('mermaid_diagram.md', 'w') as f:
-#        f.write(mermaid_diagram)
-
-#    print("Mermaid diagram saved to mermaid_diagram.md")
     print(" ")
 else:
     print("Failed to retrieve test configuration")
