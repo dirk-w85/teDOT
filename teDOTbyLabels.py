@@ -42,7 +42,6 @@ def get_thousandeyes_test_configuration():
     else:
         print(f"Error: {response.status_code}")
         return None
-#...
 
 def get_thousandeyes_test_agents(url):
     #print(url)
@@ -106,12 +105,10 @@ def test_destination(test):
     return "NA"
 
 def test_target(test, mermaid_lines):
-#    print(test)
     if test["type"] == "agent-to-server":
         mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']}<br>DSCP: {test['dscpId']} --> {test['testId']}_server([{test['server']}])")
 
     if test["type"] == "agent-to-agent":
-        #print(test)
         resp = get_thousandeyes_test_agents("https://api.thousandeyes.com/v7/agents/"+str(test['targetAgentId']))
         targetAgent = resp["agentName"]
         mermaid_lines.append(f'{test["testId"]} --Trace: {test["pathTraceMode"]}<br>Protocol: {test["protocol"]}/{test["port"]}<br>DSCP: {test["dscpId"]} --> {test["testId"]}_agent(["{targetAgent}"])')
@@ -147,21 +144,16 @@ def generate_mermaid_diagram(test_config, label):
 
     labelDetails = get_thousandeyes_label_details(label["groupId"])
 
-#    try:
     if "tests" in labelDetails["groups"][0]:
         for test in labelDetails["groups"][0]["tests"]:
             if supported_tests(test):
                 test_id = test['testId']
                 test_name = test['testName']
-#                mermaid_lines.append(f"{test_id}({test_name}<br>Target: {test_destination(test)})")
-#                print(test)
-                mermaid_lines.append(f'{test_id}("{test_name}"<br>Type: {test["type"]}, Interval: {test["interval"]}s)')
+                mermaid_lines.append(f'{test_id}("{test_name}"<br>Type: {test["type"]}, Interval: {test["interval"]}s):::teTest')
 
                 test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
-#.
 
                 for agent in test_agents["test"][0]["agents"]:
-#                    print(agent)
                     agent_id = agent['agentId']
                     agent_name = agent['agentName']
                     agent_type = agent['agentType']
@@ -173,11 +165,8 @@ def generate_mermaid_diagram(test_config, label):
 
                 mermaid_lines = test_target(test,mermaid_lines)
 
-
-#        mermaid_lines.append(get_thousandeyes_usage())
         mermaid_lines.append("classDef teAgent fill:#f80")
-
-
+        mermaid_lines.append("classDef teTest fill:#f100")
 
         return "\n".join(mermaid_lines)
 
@@ -189,10 +178,7 @@ labels = get_thousandeyes_labels()
 if labels:
     for label in labels["groups"]:
         if label["type"] == "tests" and label["builtin"] == 0:
-#            print(label["groupId"]) 
-#            print(label["name"])
             print(f'\n\n##### START - Label: {label["name"]} - START #####')
-            mermaid_diagram = generate_mermaid_diagram(test_config, label)
 
             print(mermaid_diagram) 
             with open('mermaid_diagram.md', 'a') as f:
