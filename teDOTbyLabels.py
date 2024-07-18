@@ -2,23 +2,10 @@ import requests
 import json
 import sys
 
-# Replace these with your actual ThousandEyes API credentials and API endpoint
 API_URL = 'https://api.thousandeyes.com/v6/groups.json'
 API_TOKEN = sys.argv[1]
 
-def get_thousandeyes_labels():
-    headers = {
-        'Authorization': "Bearer "+API_TOKEN
-    }
-    response = requests.get(API_URL, headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        return None    
-
-def get_thousandeyes_label_details(labelId):
-    url = "https://api.thousandeyes.com/v6/groups/"+str(labelId)
+def get_thousandeyes(url):
     headers = {
         'Authorization': "Bearer "+API_TOKEN,
         'Accept': 'application/json'
@@ -29,105 +16,33 @@ def get_thousandeyes_label_details(labelId):
     else:
         print(f"Error: {response.status_code}")
         return None    
-
-
-def get_thousandeyes_test_configuration():
-    headers = {
-        'Authorization': "Bearer "+API_TOKEN,
-        'Accept': 'application/json'
-    }
-    response = requests.get(API_URL, headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        return None
-
-def get_thousandeyes_test_agents(url):
-    #print(url)
-    headers = {
-        'Authorization': "Bearer "+API_TOKEN,
-        'Accept': 'application/json'
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        return None
-
-def get_thousandeyes_accountgroup():
-    headers = {
-        'Authorization': "Bearer "+API_TOKEN,
-        'Accept': 'application/json'
-    }
-    response = requests.get("https://api.thousandeyes.com/v7/account-groups", headers=headers)
-    if response.status_code == 200:
-        resp = response.json()
-        return resp["accountGroups"][0]["organizationName"]
-    else:
-        print(f"Error: {response.status_code}")
-        return None
-
-def get_thousandeyes_usage():
-    headers = {
-        'Authorization': "Bearer "+API_TOKEN,
-        'Accept': 'application/json'
-    }
-    response = requests.get("https://api.thousandeyes.com/v7/usage", headers=headers)
-    if response.status_code == 200:
-        resp = response.json()
-        teUnitsIncluded = str(resp["usage"]["quota"]["cloudUnitsIncluded"])
-        teCloudUnitsProjected = str(resp["usage"]["cloudUnitsProjected"])
-        teEntUnitsProjected = str(resp["usage"]["enterpriseUnitsProjected"])
-
-
-        return f"cloud([Cloud Units<br>{teCloudUnitsProjected}]) -..- total((Total Units<br>{teUnitsIncluded})) -..- ent([Enterprise Units<br>{teEntUnitsProjected}])"
-    else:
-        print(f"Error: {response.status_code}")
-        return None
-
-def test_destination(test):
-    if test["type"] == "agent-to-server":
-        return test["server"]
-
-    if test["type"] == "agent-to-agent":
-        return "Agent-to-Agent"
-
-    
-    if test["type"] == "dns-server":
-        test["domain"] = test["domain"].split(" ")
-        return test["domain"][0]
-
-    if test["type"] == "http-server" or test["type"] == "page-load" :
-        return test["url"]
-
-    return "NA"
 
 def test_target(test, mermaid_lines):
     if test["type"] == "agent-to-server":
         mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']}<br>DSCP: {test['dscpId']} --> {test['testId']}_server([{test['server']}])")
 
     if test["type"] == "agent-to-agent":
-        resp = get_thousandeyes_test_agents("https://api.thousandeyes.com/v7/agents/"+str(test['targetAgentId']))
+        resp = get_thousandeyes("https://api.thousandeyes.com/v7/agents/"+str(test['targetAgentId']))
         targetAgent = resp["agentName"]
         mermaid_lines.append(f'{test["testId"]} --Trace: {test["pathTraceMode"]}<br>Protocol: {test["protocol"]}/{test["port"]}<br>DSCP: {test["dscpId"]} --> {test["testId"]}_agent(["{targetAgent}"])')
 
     if test["type"] == "dns-server":
-        test_dnsServers = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
+        test_dnsServers = get_thousandeyes(test['apiLinks'][0]['href'])
         for dnsServer in test_dnsServers["test"][0]["dnsServers"]:
             dnsServer_id = dnsServer['serverId']
             dnsServer_name = dnsServer['serverName']
-            mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}--> {dnsServer_id}([{dnsServer_name}])")
+
+            # for next version            
+            #mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}, Protocol: {test['dnsTransportProtocol']} --> {dnsServer_id}([{dnsServer_name}])")
+            mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']} --> {dnsServer_id}([{dnsServer_name}])")
 
     if test["type"] == "http-server" or test["type"] == "page-load" :
         mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}])")
         
-
     return mermaid_lines
 
 def supported_tests(test):
-    supportedTests = ["agent-to-server","agent-to-agent","dns-server","http-server","page-load"]
+    supportedTests = ["agent-to-server","agent-to-agent","dns-server","dns-trace","http-server","page-load"]
 
     if test["enabled"] == 0:
         return False
@@ -138,21 +53,28 @@ def supported_tests(test):
             print(f'Test Type {test["type"]} not yet suppored')
             return False
 
-def generate_mermaid_diagram(test_config, label):
+def generate_mermaid_diagram(label):
+    # Mermait Frontmatter Code https://mermaid.js.org/config/configuration.html?#frontmatter-config
     mermaid_lines = ["---", "title: "+label["name"],"config:","  theme: base","  themeVariables:","    primaryColor: '#00ff00'", "---"]
+    
+    # Start of the Diagram Definition
     mermaid_lines.append("flowchart LR")
 
-    labelDetails = get_thousandeyes_label_details(label["groupId"])
+    # Getting Label Details (includes Tests and Agents)
+    labelDetails = get_thousandeyes("https://api.thousandeyes.com/v6/groups/"+str(label["groupId"]))
 
     if "tests" in labelDetails["groups"][0]:
         for test in labelDetails["groups"][0]["tests"]:
+            # Checking if Test-Type is supported in teDOT
             if supported_tests(test):
                 test_id = test['testId']
                 test_name = test['testName']
                 mermaid_lines.append(f'{test_id}("{test_name}"<br>Type: {test["type"]}, Interval: {test["interval"]}s):::teTest')
 
-                test_agents = get_thousandeyes_test_agents(test['apiLinks'][0]['href'])
+                # Getting the Agent Details
+                test_agents = get_thousandeyes(test['apiLinks'][0]['href'])
 
+                # Looping over the list of Agents in the Test
                 for agent in test_agents["test"][0]["agents"]:
                     agent_id = agent['agentId']
                     agent_name = agent['agentName']
@@ -163,8 +85,10 @@ def generate_mermaid_diagram(test_config, label):
                         agent_ip = ""
                     mermaid_lines.append(f'{agent_id}(["{agent_name}{agent_ip}<br>({agent_type} Agent)"]):::teAgent --- {test_id}')
 
+                # Creating Test Target per Type
                 mermaid_lines = test_target(test,mermaid_lines)
 
+        # Just some Formating
         mermaid_lines.append("classDef teAgent fill:#f80")
         mermaid_lines.append("classDef teTest fill:#f100")
 
@@ -172,23 +96,22 @@ def generate_mermaid_diagram(test_config, label):
 
 # Step 0: Welcome Message
 print("\nWelcome! Please wait while we create your Mermaid Code...")
-# Step 1: Retrieve the ThousandEyes Test Configuration
-test_config = get_thousandeyes_test_configuration()
-labels = get_thousandeyes_labels()
+
+# Getting all Labels 
+labels = get_thousandeyes(API_URL)
 if labels:
     for label in labels["groups"]:
+        # Checking for Test-Labels which are not Built-In
         if label["type"] == "tests" and label["builtin"] == 0:
             print(f'\n\n##### START - Label: {label["name"]} - START #####')
+            mermaid_diagram = generate_mermaid_diagram(label)
 
             print(mermaid_diagram) 
             with open('mermaid_diagram.md', 'a') as f:
                 f.write(f'\n##### START - Label: {label["name"]} - START #####\n')
                 f.write(mermaid_diagram+"\n\n")
-                f.write(f'##### END - Label: {label["name"]} - END #####\n')
-                
+                f.write(f'##### END - Label: {label["name"]} - END #####\n')                
 
-            print(f'##### END - Label: {label["name"]} - END #####')
-
-    print(" ")
+            print(f'##### END - Label: {label["name"]} - END #####\n')
 else:
     print("Failed to retrieve test configuration")
