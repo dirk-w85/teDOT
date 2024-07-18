@@ -23,6 +23,13 @@ Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
 Content-Type: application/json
 Accept: application/json
 
+### GET DNS Trace
+GET https://api.thousandeyes.com/v7/tests/dns-trace/281474976780070
+Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
+Content-Type: application/json
+Accept: application/json
+
+
 ### GET Usage
 GET https://api.thousandeyes.com/v7/usage
 Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b

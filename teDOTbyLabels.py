@@ -36,6 +36,10 @@ def test_target(test, mermaid_lines):
             #mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}, Protocol: {test['dnsTransportProtocol']} --> {dnsServer_id}([{dnsServer_name}])")
             mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']} --> {dnsServer_id}([{dnsServer_name}])")
 
+    if test["type"] == "dns-trace":
+        mermaid_lines.append(f"{test['testId']} --DNS Query-Class: {test['dnsQueryClass']}<br>DNS Protocol: {test['dnsTransportProtocol']} --> {test['testId']}_domain({test['domain']}):::teTarget")
+
+
     if test["type"] == "http-server" or test["type"] == "page-load" :
         mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}])")
         
@@ -55,7 +59,11 @@ def supported_tests(test):
 
 def generate_mermaid_diagram(label):
     # Mermait Frontmatter Code https://mermaid.js.org/config/configuration.html?#frontmatter-config
-    mermaid_lines = ["---", "title: "+label["name"],"config:","  theme: base","  themeVariables:","    primaryColor: '#00ff00'", "---"]
+    mermaid_lines = ["---"]
+    mermaid_lines.append("title: "+label["name"])
+    mermaid_lines.append("config:")
+    mermaid_lines.append("  theme: base")
+    mermaid_lines.append("---")
     
     # Start of the Diagram Definition
     mermaid_lines.append("flowchart LR")
@@ -89,8 +97,9 @@ def generate_mermaid_diagram(label):
                 mermaid_lines = test_target(test,mermaid_lines)
 
         # Just some Formating
-        mermaid_lines.append("classDef teAgent fill:#f80")
-        mermaid_lines.append("classDef teTest fill:#f100")
+        mermaid_lines.append("classDef teAgent fill:#FA6800")
+        mermaid_lines.append("classDef teTest fill:#DAE8FC")
+        mermaid_lines.append("classDef teTarget fill:#FFF2CC")
 
         return "\n".join(mermaid_lines)
 
