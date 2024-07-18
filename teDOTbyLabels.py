@@ -19,12 +19,13 @@ def get_thousandeyes(url):
 
 def test_target(test, mermaid_lines):
     if test["type"] == "agent-to-server":
-        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']}<br>DSCP: {test['dscpId']} --> {test['testId']}_server([{test['server']}])")
+        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']}<br>DSCP: {test['dscpId']} --> {test['testId']}_server([{test['server']}]):::teTarget")
 
     if test["type"] == "agent-to-agent":
         resp = get_thousandeyes("https://api.thousandeyes.com/v7/agents/"+str(test['targetAgentId']))
         targetAgent = resp["agentName"]
-        mermaid_lines.append(f'{test["testId"]} --Trace: {test["pathTraceMode"]}<br>Protocol: {test["protocol"]}/{test["port"]}<br>DSCP: {test["dscpId"]} --> {test["testId"]}_agent(["{targetAgent}"])')
+        agent_type = resp["agentType"]
+        mermaid_lines.append(f'{test["testId"]} --Trace: {test["pathTraceMode"]}<br>Protocol: {test["protocol"]}/{test["port"]}<br>DSCP: {test["dscpId"]} --> {test["testId"]}_agent(["{targetAgent}<br>({agent_type} Agent)"]):::teTarget')
 
     if test["type"] == "dns-server":
         test_dnsServers = get_thousandeyes(test['apiLinks'][0]['href'])
@@ -34,14 +35,14 @@ def test_target(test, mermaid_lines):
 
             # for next version            
             #mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}, Protocol: {test['dnsTransportProtocol']} --> {dnsServer_id}([{dnsServer_name}])")
-            mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']} --> {dnsServer_id}([{dnsServer_name}])")
+            mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']} --> {dnsServer_id}([{dnsServer_name}]):::teTarget")
 
     if test["type"] == "dns-trace":
         mermaid_lines.append(f"{test['testId']} --DNS Query-Class: {test['dnsQueryClass']}<br>DNS Protocol: {test['dnsTransportProtocol']} --> {test['testId']}_domain({test['domain']}):::teTarget")
 
 
     if test["type"] == "http-server" or test["type"] == "page-load" :
-        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}])")
+        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}]):::teTarget")
         
     return mermaid_lines
 
@@ -64,7 +65,7 @@ def generate_mermaid_diagram(label):
     mermaid_lines.append("config:")
     mermaid_lines.append("  theme: base")
     mermaid_lines.append("---")
-    
+
     # Start of the Diagram Definition
     mermaid_lines.append("flowchart LR")
 
