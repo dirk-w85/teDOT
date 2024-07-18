@@ -117,10 +117,10 @@ if labels:
             mermaid_diagram = generate_mermaid_diagram(label)
 
             print(mermaid_diagram) 
-            with open('mermaid_diagram.md', 'a') as f:
-                f.write(f'\n##### START - Label: {label["name"]} - START #####\n')
-                f.write(mermaid_diagram+"\n\n")
-                f.write(f'##### END - Label: {label["name"]} - END #####\n')                
+            #with open('mermaid_diagram.md', 'a') as f:
+            #    f.write(f'\n##### START - Label: {label["name"]} - START #####\n')
+            #    f.write(mermaid_diagram+"\n\n")
+            #    f.write(f'##### END - Label: {label["name"]} - END #####\n')                
 
             print(f'##### END - Label: {label["name"]} - END #####\n')
 else:
