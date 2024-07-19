@@ -8,7 +8,7 @@ on:
         description: "ThousandEyes Oauth Token"
 
 jobs:
-  Test Diagrams:
+  Test_Diagrams:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout current Code
@@ -35,7 +35,7 @@ jobs:
 #        path: mermaid_diagram.md
 
 
-  Alert Diagrams:
+  Alert_Diagrams:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout current Code
