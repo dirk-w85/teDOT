@@ -89,7 +89,7 @@ def generate_mermaid_diagram(alertId):
             test_name = test['testName']
             #mermaid_lines.append(f'{test['testId']}("{test['testName']}"):::teTest')
             #mermaid_lines.append(f'{alertDetails["ruleId"]} --> {test['testId']}')
-            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {test['testId']}("Test: {test['testName']}"):::teTest')
+            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {test["testId"]}("Test: {test["testName"]}"):::teTest')
 
                 # Getting the Agent Details
                 #test_agents = get_thousandeyes(test['apiLinks'][0]['href'])
