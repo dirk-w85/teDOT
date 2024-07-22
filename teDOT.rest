@@ -61,3 +61,12 @@ Authorization: Bearer 01ab-a08a5234-2e8d-4d69-8fb4-db46c9ffc31b
 Content-Type: application/json
 Accept: application/json
 
+
+
+###
+
+
+GET https://api.thousandeyes.com/v7/alerts/rules/281474976758071
+Authorization: Bearer 01ab-b8d1cea2-17e2-4f94-884a-5b500739905f
+Content-Type: application/json
+Accept: application/json
