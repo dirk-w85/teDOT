@@ -11,7 +11,7 @@ I´m lazy and didn´t want to do PoV Setup drawings in PowerPoint.
 ## Usage
 
 ### Test Diagram creation
-![[teDOT-Page-2.drawio.png]]
+![pic](teDOT-Page-2.drawio.png)
 
 To generate Test Diagrams use the "teDOTbyLabels.py" script. (Your API Token is requried as input)
 It will create a Mermaid Diagram per Test Label configured. 
@@ -22,7 +22,7 @@ python3 teDOTbyLabels.py <TOKEN>
 
 
 ### Alert Diagram creation
-![[teDOT-Page-7.drawio.png]]
+![pic](teDOT-Page-7.drawio.png)
 To generate ALert Diagrams use the "teDOTbyAlerts.py" script. (Your API Token is requried as input)
 
 ```
