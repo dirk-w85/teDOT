@@ -59,19 +59,18 @@ def supported_tests(test):
             return False
 
 def generate_mermaid_diagram(alertId):
+    # Getting Label Details (includes Tests and Agents)
+    alertDetails = get_thousandeyes("https://api.thousandeyes.com/v7/alerts/rules/"+str(alertId))
+
     # Mermait Frontmatter Code https://mermaid.js.org/config/configuration.html?#frontmatter-config
     mermaid_lines = ["---"]
-    mermaid_lines.append("title: ")
+    mermaid_lines.append("title: Alert Rule - "+alertDetails["ruleName"])
     mermaid_lines.append("config:")
     mermaid_lines.append("  theme: base")
     mermaid_lines.append("---")
 
     # Start of the Diagram Definition
     mermaid_lines.append("flowchart LR")
-
-
-    # Getting Label Details (includes Tests and Agents)
-    alertDetails = get_thousandeyes("https://api.thousandeyes.com/v7/alerts/rules/"+str(alertId))
 
     # Replace characters in alert expression to work with mermaid
     alertDetails["expression"] = alertDetails["expression"].replace('"', "'")
@@ -86,27 +85,37 @@ def generate_mermaid_diagram(alertId):
             #print(test['testId'])
             #if supported_tests(test):
             #test_id = test['testId']
-            test_name = test['testName']
+            #test_name = test['testName']
             #mermaid_lines.append(f'{test['testId']}("{test['testName']}"):::teTest')
             #mermaid_lines.append(f'{alertDetails["ruleId"]} --> {test['testId']}')
-            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {test["testId"]}("Test: {test["testName"]}"):::teTest')
+            mermaid_lines.append(f'{test["testId"]}("Test: {test["testName"]}"):::teTest --> {alertDetails["ruleId"]}')
 
-                # Getting the Agent Details
-                #test_agents = get_thousandeyes(test['apiLinks'][0]['href'])
+    
+    if "email" in alertDetails["notifications"]:
+        recepientCount = 0
+        if "recipients" in alertDetails["notifications"]["email"]:
+            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_email("Email")')
+        #if len(alertDetails["notifications"]["email"]["recipients"]) >= 1:
+            for recepient in alertDetails["notifications"]["email"]["recipients"]:
 
-                # Looping over the list of Agents in the Test
-                #for agent in test_agents["test"][0]["agents"]:
-                #    agent_id = agent['agentId']
-                #    agent_name = agent['agentName']
-                #    agent_type = agent['agentType']
-                #    if agent_type == "Enterprise":
-                #        agent_ip = "<br>IP: "+agent["ipAddresses"][0]
-                #    else:
-                #        agent_ip = ""
-                #    mermaid_lines.append(f'{agent_id}(["{agent_name}{agent_ip}<br>({agent_type} Agent)"]):::teAgent --- {test_id}')
 
-                # Creating Test Target per Type
-                #mermaid_lines = test_target(test,mermaid_lines)
+                recipientObj = recepient.replace(".","_")
+                recipientObj = recipientObj.replace("@","_")
+                #mermaid_lines.append(f'{alertDetails["ruleId"]}_email --> {alertDetails["ruleId"]}_rec{str(recepientCount)}(["{recepient}"])')
+                mermaid_lines.append(f'{alertDetails["ruleId"]}_email --> {recipientObj}(["{recepient}"])')
+                recepientCount=recepientCount+1
+
+    if "thirdParty" in alertDetails["notifications"]:
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_3rd("3rd Party")')
+    if "webhook" in alertDetails["notifications"]:
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook")')
+    if "customWebhook" in alertDetails["notifications"]:
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook")')
+        for webhook in alertDetails["notifications"]["customWebhook"]:
+            mermaid_lines.append(f'{alertDetails["ruleId"]}_webhook --> {webhook["integrationId"]}("{webhook["integrationName"]}")')
+
+            mermaid_lines.append(f'{webhook["integrationId"]} --> {webhook["integrationId"]}_target("{webhook["target"]}")')
+
 
     # Just some Formating
     mermaid_lines.append("classDef teAgent fill:#FA6800")
@@ -122,17 +131,10 @@ print("\nWelcome! Please wait while we create your Mermaid Code...")
 alertRules = get_thousandeyes(API_URL)
 if alertRules:
     for alertRule in alertRules["alertRules"]:
-#        print(alertRule["ruleId"])
-#        # Checking for Test-Labels which are not Built-In
-#        if label["type"] == "tests" and label["builtin"] == 0:
         print(f'\n\n##### START - Label: {alertRule["ruleName"]} - START #####')
         mermaid_diagram = generate_mermaid_diagram(alertRule["ruleId"])
 #
-        print(mermaid_diagram) 
-#            #with open('mermaid_diagram.md', 'a') as f:
-#            #    f.write(f'\n##### START - Label: {label["name"]} - START #####\n')
-#            #    f.write(mermaid_diagram+"\n\n")
-#            #    f.write(f'##### END - Label: {label["name"]} - END #####\n')                
+        print(mermaid_diagram)           
 #
         print(f'##### END - Label: {alertRule["ruleName"]} - END #####\n')
 else:
