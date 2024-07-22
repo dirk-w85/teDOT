@@ -75,17 +75,12 @@ def generate_mermaid_diagram(alertId):
     # Replace characters in alert expression to work with mermaid
     alertDetails["expression"] = alertDetails["expression"].replace('"', "'")
 
-    mermaid_lines.append(f'{alertDetails["ruleId"]}("{alertDetails["ruleName"]}<br>Sev: {alertDetails["severity"].upper()}") --- {alertDetails["ruleId"]}_exp(["{alertDetails["expression"]}"])')
+    mermaid_lines.append(f'{alertDetails["ruleId"]}("{alertDetails["ruleName"]}<br>Sev: {alertDetails["severity"].upper()}"):::teRule --- {alertDetails["ruleId"]}_exp(["{alertDetails["expression"]}"])')
     #print("\n".join(mermaid_lines))
 
     if "tests" in alertDetails:
         #print(alertDetails)
         for test in alertDetails["tests"]:
-        # Checking if Test-Type is supported in teDOT
-            #print(test['testId'])
-            #if supported_tests(test):
-            #test_id = test['testId']
-            #test_name = test['testName']
             #mermaid_lines.append(f'{test['testId']}("{test['testName']}"):::teTest')
             #mermaid_lines.append(f'{alertDetails["ruleId"]} --> {test['testId']}')
             mermaid_lines.append(f'{test["testId"]}("Test: {test["testName"]}"):::teTest --> {alertDetails["ruleId"]}')
@@ -94,7 +89,7 @@ def generate_mermaid_diagram(alertId):
     if "email" in alertDetails["notifications"]:
         recepientCount = 0
         if "recipients" in alertDetails["notifications"]["email"]:
-            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_email("Email")')
+            mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_email("Email"):::teNoti')
         #if len(alertDetails["notifications"]["email"]["recipients"]) >= 1:
             for recepient in alertDetails["notifications"]["email"]["recipients"]:
 
@@ -106,11 +101,11 @@ def generate_mermaid_diagram(alertId):
                 recepientCount=recepientCount+1
 
     if "thirdParty" in alertDetails["notifications"]:
-        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_3rd("3rd Party")')
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_3rd("3rd Party"):::teNoti')
     if "webhook" in alertDetails["notifications"]:
-        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook")')
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook"):::teNoti')
     if "customWebhook" in alertDetails["notifications"]:
-        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook")')
+        mermaid_lines.append(f'{alertDetails["ruleId"]}_exp --> {alertDetails["ruleId"]}_webhook("Webhook"):::teNoti')
         for webhook in alertDetails["notifications"]["customWebhook"]:
             mermaid_lines.append(f'{alertDetails["ruleId"]}_webhook --> {webhook["integrationId"]}("{webhook["integrationName"]}")')
 
@@ -118,9 +113,9 @@ def generate_mermaid_diagram(alertId):
 
 
     # Just some Formating
-    mermaid_lines.append("classDef teAgent fill:#FA6800")
-    mermaid_lines.append("classDef teTest fill:#DAE8FC")
-    mermaid_lines.append("classDef teTarget fill:#FFF2CC")
+    mermaid_lines.append("classDef teTest fill:#FA6800")
+    mermaid_lines.append("classDef teRule fill:#DAE8FC")
+    mermaid_lines.append("classDef teNoti fill:#FFF2CC")
 
     return "\n".join(mermaid_lines)
 
@@ -133,9 +128,9 @@ if alertRules:
     for alertRule in alertRules["alertRules"]:
         print(f'\n\n##### START - Label: {alertRule["ruleName"]} - START #####')
         mermaid_diagram = generate_mermaid_diagram(alertRule["ruleId"])
-#
+
         print(mermaid_diagram)           
-#
+
         print(f'##### END - Label: {alertRule["ruleName"]} - END #####\n')
 else:
     print("Failed to retrieve test configuration")
