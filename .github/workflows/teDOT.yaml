@@ -36,6 +36,7 @@ jobs:
 
 
   Alert_Diagrams:
+    needs: Test_Diagrams
     runs-on: ubuntu-latest
     steps:
     - name: Checkout current Code
