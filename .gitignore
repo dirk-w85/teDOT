@@ -22,3 +22,4 @@ go.work
 *.toml
 mermaid_diagram.md
 mermaid_diagram.md
+output.txt
