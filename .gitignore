@@ -8,7 +8,7 @@
 *.so
 *.dylib
 .DS_store
-
+*.rest
 # Test binary, built with `go test -c`
 *.test
 
