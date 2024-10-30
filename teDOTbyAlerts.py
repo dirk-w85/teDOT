@@ -109,7 +109,7 @@ def generate_mermaid_diagram(alertId):
         for webhook in alertDetails["notifications"]["customWebhook"]:
             mermaid_lines.append(f'{alertDetails["ruleId"]}_webhook --> {webhook["integrationId"]}("{webhook["integrationName"]}")')
 
-            mermaid_lines.append(f'{webhook["integrationId"]} --> {webhook["integrationId"]}_target("{webhook["target"]}")')
+            mermaid_lines.append(f'{webhook["integrationId"]} --> {webhook["integrationId"]}_target("<p>{webhook["target"]}</p>")')
 
 
     # Just some Formating
@@ -126,11 +126,11 @@ print("\nWelcome! Please wait while we create your Mermaid Code...")
 alertRules = get_thousandeyes(API_URL)
 if alertRules:
     for alertRule in alertRules["alertRules"]:
-        print(f'\n\n##### START - Label: {alertRule["ruleName"]} - START #####')
+        print(f'\n\n##### START - Alert Rule: {alertRule["ruleName"]} - START #####')
         mermaid_diagram = generate_mermaid_diagram(alertRule["ruleId"])
 
         print(mermaid_diagram)           
 
-        print(f'##### END - Label: {alertRule["ruleName"]} - END #####\n')
+        print(f'##### END - Alert Rule: {alertRule["ruleName"]} - END #####\n')
 else:
     print("Failed to retrieve test configuration")
