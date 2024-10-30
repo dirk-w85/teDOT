@@ -1,12 +1,12 @@
 # teDOT - Visualize your PoV Setup
 
 ## Intro
-I´m lazy and didn´t want to do PoV Setup drawings in PowerPoint. 
+I´m lazy and don´t want to do PoV Setup drawings in PowerPoint. 
 
 ## Problem this solves
-- Quick creation of drawing in Mermaid Code (can be used in a variety of Tool)
-- Display major Test and Alert Settings
-- Helps to indentify Configuration Inconsitency
+- Quick creation of Mermaid Code (can be used in a variety of Tools)
+- Display Cloud&Enterprise Agent Tests and Alert Rules
+- Helps to indentify Configuration inconsitency
 
 ## Usage
 
@@ -20,7 +20,8 @@ python3 teDOTbyLabels.py <TOKEN>
 
 
 ### Alert Diagram creation
-To generate ALert Diagrams use the "teDOTbyAlerts.py" script. (Your API Token is requried as input)
+To generate Alert Diagrams use the "teDOTbyAlerts.py" script. (Your API Token is requried as input)
+It will create a Mermaid Diagram per Alert Rule. 
 
 ```
 python3 teDOTbyAlerts.py <TOKEN>
