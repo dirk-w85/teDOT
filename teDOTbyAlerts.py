@@ -97,7 +97,7 @@ def generate_mermaid_diagram(alertId):
                 recipientObj = recepient.replace(".","_")
                 recipientObj = recipientObj.replace("@","_")
                 #mermaid_lines.append(f'{alertDetails["ruleId"]}_email --> {alertDetails["ruleId"]}_rec{str(recepientCount)}(["{recepient}"])')
-                mermaid_lines.append(f'{alertDetails["ruleId"]}_email --> {recipientObj}(["{recepient}"])')
+                mermaid_lines.append(f'{alertDetails["ruleId"]}_email --> {recipientObj}(["<p>{recepient}</p>"])')
                 recepientCount=recepientCount+1
 
     if "thirdParty" in alertDetails["notifications"]:

@@ -42,7 +42,7 @@ def test_target(test, mermaid_lines):
 
 
     if test["type"] == "http-server" or test["type"] == "page-load" :
-        mermaid_lines.append(f"{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url([{test['url'].rstrip('/')}]):::teTarget")
+        mermaid_lines.append(f'{test['testId']} --Trace: {test['pathTraceMode']}<br>Protocol: {test['protocol']} --> {test['testId']}_url(["<p>{test['url'].rstrip('/')}</p>"]):::teTarget')
         
     return mermaid_lines
 
