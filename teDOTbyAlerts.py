@@ -134,3 +134,4 @@ if alertRules:
         print(f'##### END - Alert Rule: {alertRule["ruleName"]} - END #####\n')
 else:
     print("Failed to retrieve test configuration")
+    
