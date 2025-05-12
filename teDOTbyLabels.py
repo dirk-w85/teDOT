@@ -87,8 +87,9 @@ def generate_mermaid_diagram(label):
                 for agent in test_agents["test"][0]["agents"]:
                     agent_id = agent['agentId']
                     agent_name = agent['agentName']
-                    agent_type = agent['agentType']
-                    if agent_type == "Enterprise":
+                    agent_type = agent['agentType']        
+                    if agent_type == "Enterprise" and "ipAddresses" in agent:
+                        #print(agent["ipAddresses"])
                         agent_ip = "<br>IP: "+agent["ipAddresses"][0]
                     else:
                         agent_ip = ""
