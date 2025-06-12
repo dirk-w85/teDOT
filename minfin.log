@@ -1,0 +1,1712 @@
+
+Welcome! Please wait while we create your Mermaid Code...
+
+
+##### START - Label: Office Online - START #####
+---
+title: Office Online
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815723("M365 - App Portal - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+281474976815723 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815723_domain(microsoft365.com A):::teTarget
+281474976815725("M365 - Login - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+281474976815725 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815725_domain(login.microsoftonline.com CNAME):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Office Online - END #####
+
+
+
+##### START - Label: Network Health Overview - START #####
+---
+title: Network Health Overview
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976809409("myMinfin - DNS"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+281474976809409 --Trace: classic --> 281474976743003([ns2.belbone.be.]):::teTarget
+281474976809409 --Trace: classic --> 281474976743004([ns.belbone.be.]):::teTarget
+281474976815723("M365 - App Portal - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+281474976815723 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815723_domain(microsoft365.com A):::teTarget
+281474976815725("M365 - Login - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+281474976815725 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815725_domain(login.microsoftonline.com CNAME):::teTarget
+281474976815717("M365 - OneDrive - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+281474976815717 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815717_domain(minfinbe-my.sharepoint.com CNAME):::teTarget
+281474976815721("M365 - Outlook - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+281474976815721 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815721_domain(outlook.office.com CNAME):::teTarget
+281474976815726("M365 - SharePoint - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+281474976815726 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815726_domain(minfinbe.sharepoint.com CNAME):::teTarget
+281474976834022("CDIS (OpenShift) - Prod"<br>Type: http-server, Interval: 120s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734961(["fLierKru<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734962(["fSVitCou<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734964(["fGentLie<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734972(["fAthCap<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734978(["fHuyCom<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734980(["fAntwIta-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734983(["fGentCro-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734984(["fHassVoo-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734986(["fBrugAlb-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734987(["fAntwEll-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734990(["fLiegFra-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734991(["fMonsInq-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734992(["fNamuBou-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734993(["fCharAlb-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734994(["fBrassRui<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735000(["fHallber<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735004(["fTurnSpo<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735007(["fServGem<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735011(["fKallAnt-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735012(["fAntwTij-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735013(["fWillebroek-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735014(["fMeerhout-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735015(["fZeebrugge-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735017(["fPOCTest<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976834022 --Trace: classic<br>Protocol: TCP --> 281474976834022_url(["<p>https://10.21.204.6:4080</p>"]):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976809397("myMinfin - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+281474976809397 --Trace: classic<br>Protocol: TCP --> 281474976809397_url(["<p>https://www.minfin.fgov.be/myminfin-web/pages/public</p>"]):::teTarget
+281474976833686("myMinfin - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976833686 --Trace: classic<br>Protocol: TCP --> 281474976833686_url(["<p>https://www.minfin.fgov.be/myminfin-web/pages/public</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Network Health Overview - END #####
+
+
+
+##### START - Label: Use-Case_CriticalApps - START #####
+---
+title: Use-Case_CriticalApps
+config:
+  theme: base
+---
+flowchart LR
+281474976809409("myMinfin - DNS"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976809409
+281474976809409 --Trace: classic --> 281474976743003([ns2.belbone.be.]):::teTarget
+281474976809409 --Trace: classic --> 281474976743004([ns.belbone.be.]):::teTarget
+281474976834022("CDIS (OpenShift) - Prod"<br>Type: http-server, Interval: 120s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734961(["fLierKru<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734962(["fSVitCou<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734964(["fGentLie<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734972(["fAthCap<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734978(["fHuyCom<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734980(["fAntwIta-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734983(["fGentCro-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734984(["fHassVoo-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734986(["fBrugAlb-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734987(["fAntwEll-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734990(["fLiegFra-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734991(["fMonsInq-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734992(["fNamuBou-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734993(["fCharAlb-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734994(["fBrassRui<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735000(["fHallber<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735004(["fTurnSpo<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735007(["fServGem<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735011(["fKallAnt-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735012(["fAntwTij-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735013(["fWillebroek-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735014(["fMeerhout-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735015(["fZeebrugge-Force<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735017(["fPOCTest<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976834022
+281474976834022 --Trace: classic<br>Protocol: TCP --> 281474976834022_url(["<p>https://10.21.204.6:4080</p>"]):::teTarget
+281474976809397("myMinfin - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976809397
+281474976809397 --Trace: classic<br>Protocol: TCP --> 281474976809397_url(["<p>https://www.minfin.fgov.be/myminfin-web/pages/public</p>"]):::teTarget
+281474976833686("myMinfin - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976833686
+281474976833686 --Trace: classic<br>Protocol: TCP --> 281474976833686_url(["<p>https://www.minfin.fgov.be/myminfin-web/pages/public</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Use-Case_CriticalApps - END #####
+
+
+
+##### START - Label: M365 - START #####
+---
+title: M365
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815723("M365 - App Portal - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+281474976815723 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815723_domain(microsoft365.com A):::teTarget
+281474976815725("M365 - Login - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+281474976815725 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815725_domain(login.microsoftonline.com CNAME):::teTarget
+281474976815717("M365 - OneDrive - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+281474976815717 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815717_domain(minfinbe-my.sharepoint.com CNAME):::teTarget
+281474976815721("M365 - Outlook - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+281474976815721 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815721_domain(outlook.office.com CNAME):::teTarget
+281474976815726("M365 - SharePoint - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+281474976815726 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815726_domain(minfinbe.sharepoint.com CNAME):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: M365 - END #####
+
+
+
+##### START - Label: Microsoft 365 - START #####
+---
+title: Microsoft 365
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815723("M365 - App Portal - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+281474976815723 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815723_domain(microsoft365.com A):::teTarget
+281474976815725("M365 - Login - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+281474976815725 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815725_domain(login.microsoftonline.com CNAME):::teTarget
+281474976815717("M365 - OneDrive - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+281474976815717 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815717_domain(minfinbe-my.sharepoint.com CNAME):::teTarget
+281474976815721("M365 - Outlook - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+281474976815721 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815721_domain(outlook.office.com CNAME):::teTarget
+281474976815726("M365 - SharePoint - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+281474976815726 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815726_domain(minfinbe.sharepoint.com CNAME):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Microsoft 365 - END #####
+
+
+
+##### START - Label: Exchange Online - START #####
+---
+title: Exchange Online
+config:
+  theme: base
+---
+flowchart LR
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815721("M365 - Outlook - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+281474976815721 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815721_domain(outlook.office.com CNAME):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Exchange Online - END #####
+
+
+
+##### START - Label: Health Overview Dashboard - START #####
+---
+title: Health Overview Dashboard
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815723("M365 - App Portal - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815723
+281474976815723 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815723_domain(microsoft365.com A):::teTarget
+281474976815725("M365 - Login - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815725
+281474976815725 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815725_domain(login.microsoftonline.com CNAME):::teTarget
+281474976815717("M365 - OneDrive - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+281474976815717 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815717_domain(minfinbe-my.sharepoint.com CNAME):::teTarget
+281474976815721("M365 - Outlook - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815721
+281474976815721 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815721_domain(outlook.office.com CNAME):::teTarget
+281474976815726("M365 - SharePoint - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+281474976815726 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815726_domain(minfinbe.sharepoint.com CNAME):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Health Overview Dashboard - END #####
+
+
+
+##### START - Label: Use-Case_Office365 - START #####
+---
+title: Use-Case_Office365
+config:
+  theme: base
+---
+flowchart LR
+281474976815713("M365 - App Portal - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815713
+281474976815713 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815713 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815722("M365 - Login - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815722
+281474976815722 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815722 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815729("M365 - Outlook - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815729
+281474976815729 --Trace: classic --> 281474976716751([ns3-33.azure-dns.org.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716752([ns4-33.azure-dns.info.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716753([ns1-33.azure-dns.com.]):::teTarget
+281474976815729 --Trace: classic --> 281474976716754([ns2-33.azure-dns.net.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815732("M365 - App Portal - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815732
+281474976815732 --Trace: classic<br>Protocol: TCP --> 281474976815732_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815719("M365 - App Portal - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815719
+281474976815719 --Trace: classic<br>Protocol: TCP --> 281474976815719_url(["<p>https://microsoft365.com</p>"]):::teTarget
+281474976815724("M365 - Login - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815724
+281474976815724 --Trace: classic<br>Protocol: TCP --> 281474976815724_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815720("M365 - Login - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815720
+281474976815720 --Trace: classic<br>Protocol: TCP --> 281474976815720_url(["<p>https://login.microsoftonline.com</p>"]):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815716("M365 - Outlook - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815716
+281474976815716 --Trace: classic<br>Protocol: TCP --> 281474976815716_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815731("M365 - Outlook - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815731
+281474976815731 --Trace: classic<br>Protocol: TCP --> 281474976815731_url(["<p>https://outlook.office.com/owa</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: Use-Case_Office365 - END #####
+
+
+
+##### START - Label: SharePoint Online - START #####
+---
+title: SharePoint Online
+config:
+  theme: base
+---
+flowchart LR
+281474976815728("M365 - OneDrive - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815728
+281474976815728 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815728 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815718("M365 - SharePoint - DNS - Internal"<br>Type: dns-server, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815718
+281474976815718 --Trace: classic --> 281474976714264([ns3-221.azure-dns.org.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714265([ns4-221.azure-dns.info.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714266([ns2-221.azure-dns.net.]):::teTarget
+281474976815718 --Trace: classic --> 281474976714267([ns1-221.azure-dns.com.]):::teTarget
+281474976815717("M365 - OneDrive - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815717
+281474976815717 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815717_domain(minfinbe-my.sharepoint.com CNAME):::teTarget
+281474976815726("M365 - SharePoint - DNS - External"<br>Type: dns-trace, Interval: 600s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815726
+281474976815726 --DNS Query-Class: IN<br>DNS Protocol: UDP --> 281474976815726_domain(minfinbe.sharepoint.com CNAME):::teTarget
+281474976815730("M365 - OneDrive - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815730
+281474976815730 --Trace: classic<br>Protocol: TCP --> 281474976815730_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815715("M365 - OneDrive - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815715
+281474976815715 --Trace: classic<br>Protocol: TCP --> 281474976815715_url(["<p>https://minfinbe-my.sharepoint.com</p>"]):::teTarget
+281474976815714("M365 - SharePoint - Web - External"<br>Type: http-server, Interval: 300s):::teTest
+73(["Brussels, Belgium<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+507116(["Liege, Belgium (Telenet Belgacom)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+599796(["Antwerp, Belgium (Proximus)<br>(Cloud Agent)"]):::teAgent --- 281474976815714
+281474976815714 --Trace: classic<br>Protocol: TCP --> 281474976815714_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+281474976815727("M365 - SharePoint - Web - Internal"<br>Type: http-server, Interval: 300s):::teTest
+281474976734956(["fHassVoo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734957(["fLeuvPhi<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734958(["fTourCha<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734960(["fDiesAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734959(["fLiegFra<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734963(["fEupeHot<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734965(["fGentCro<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734966(["fBruxBol<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734967(["fAalsSie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734968(["fBruxLut<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734969(["fBrugAlb<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734970(["fNeufClo<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734971(["fOttiDel<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734973(["fNamuBou<br>IP: 198.51.100.6<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734974(["fCineCou<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734975(["fZaveBruGeb1<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734976(["fMonsInq<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734977(["fMonsJon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734979(["fCharAlb<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734981(["fAntwIta<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734982(["fAntwEll<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734985(["fCharMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734988(["fKortHov-EAudit<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734989(["fKortHov<br>IP: 198.51.100.4<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734995(["fNiklDri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734996(["fVilvGro<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734997(["fMarcMon<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734998(["fVervDis<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976734999(["fDendRoc<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735001(["fOudeMar<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735002(["fMechZwa<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735003(["fOostVri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735005(["fTongVer<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735006(["fRoesRon<br>IP: 198.51.100.3<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735008(["fGossWri<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735009(["fOostNie<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735010(["fVilvLev<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735016(["fBornInd<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735018(["fRaerE40<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735019(["fBruxEnt<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735020(["fArloFus<br>IP: 198.51.100.2<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735021(["fBruxCom<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976735022(["fTurnGul<br>IP: 198.51.100.7<br>(Enterprise Agent)"]):::teAgent --- 281474976815727
+281474976815727 --Trace: classic<br>Protocol: TCP --> 281474976815727_url(["<p>https://minfinbe.sharepoint.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC
+##### END - Label: SharePoint Online - END #####
+
+
+
+##### START - Label: Use-Case_SECaaS - START #####
+None
+##### END - Label: Use-Case_SECaaS - END #####
+

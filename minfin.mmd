@@ -1,0 +1,26 @@
+---
+title: ticketsystem.all-for-one.com
+config:
+  theme: base
+---
+flowchart LR
+281474976853058("ticketsystem.all-for-one.com - DNS"<br>Type: dns-server, Interval: 120s):::teTest
+144(["Vienna, Austria<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+315431(["Frankfurt, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+42311(["Hamburg, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+18(["Zurich, Switzerland<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+1369098(["Berlin, Germany (Deutsche Telekom)<br>(Cloud Agent)"]):::teAgent --- 281474976853058
+281474976853058 --Trace: classic --> 281474976755077([ns2.nic53.de.]):::teTarget
+281474976853058 --Trace: classic --> 281474976755078([ns1.nic53.net.]):::teTarget
+281474976853057("ticketsystem.all-for-one.com - HTTP Server"<br>Type: http-server, Interval: 120s):::teTest
+144(["Vienna, Austria<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+4844(["Munich, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+315431(["Frankfurt, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+42311(["Hamburg, Germany<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+18(["Zurich, Switzerland<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+1369098(["Berlin, Germany (Deutsche Telekom)<br>(Cloud Agent)"]):::teAgent --- 281474976853057
+281474976853057 -. Trace: classic<br>Protocol: TCP .-> 281474976853057_url(["<p>https://ticketsystem.all-for-one.com</p>"]):::teTarget
+classDef teAgent fill:#FA6800
+classDef teTest fill:#DAE8FC
+classDef teTarget fill:#FFF2CC

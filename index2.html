@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+  }
+  .enterpriseAgent circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+    fill: #d67027;
+  }
+  .test circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+    fill: #2759d6;
+  }
+
+  .node text {
+    font: 12px sans-serif;
+    text-anchor: middle;
+    fill: #333;
+    pointer-events: none;
+  }
+</style>
+<svg width="600" height="400"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+  // Set up SVG and dimensions
+  var svg = d3.select("svg"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height");
+
+  // Specify the color scale.
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // Example node and link data
+  var nodes = [
+    {id: "EA1", group: "#d67027", descr: "R1-1121X"},
+    {id: "EA2", group: "#d67027", descr: "TE-VA-01"},
+    {id: "EA3", group: "#d67027", descr: "TE-VA-02"},
+    {id: "TEST1", group: "blue", descr: "Microsoft Teams"},
+    {id: "TARGET1", group: "red", descr: "teams.microsoft.com"}
+  ];
+
+
+  // Example node and link data
+  var tests = [
+    {id: "TEST1", group: 2},
+    {id: "TARGET1", group: 3}
+  ];
+
+  var links = [
+    {source: "EA1", target: "TEST1"},
+    {source: "EA2", target: "TEST1"},
+    {source: "EA3", target: "TEST1"},
+    {source: "TEST1", target: "TARGET1"}
+  ];
+
+  // Create simulation with forces
+  var simulation = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(function(d) { return d.id; }))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+  // Draw links (lines)
+  var link = svg.append("g")
+      .attr("class", "links")
+    .selectAll("line")
+    .data(links)
+    .enter().append("line")
+      .attr("stroke-width", 2);
+
+  // Draw nodes (circles)
+  var node = svg.append("g")
+   // .attr("class", "enterpriseAgent")
+    .selectAll("circle")
+    .data(nodes)
+    .enter().append("circle")
+      .attr("r", 10)
+      .attr("fill", d => d.group)
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+    node.append("title")
+      .text(d => d.descr);
+
+    node.append("text")
+      .attr("dy", 4)
+      .text(d => d.name)
+      .attr("stroke", "gray");
+
+  // Update positions on each tick
+  simulation.on("tick", function() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+
+  // Drag event handlers
+  function dragstarted(d) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+
+  function dragged(d) {
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+  }
+
+  function dragended(d) {
+    if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+</script>

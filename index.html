@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cytoscape.js Network Graph - Labels Next to Nodes</title>
+    <style>
+        #cy {
+            width: 100%;
+            height: 500px;
+            display: block;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <!-- Include Cytoscape.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+</head>
+<body>
+    <h1>Network Graph with Labels Next to Nodes</h1>
+    <!-- Container for the graph -->
+    <div id="cy"></div>
+
+    <script>
+        // Initialize Cytoscape when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the Cytoscape instance
+            var cy = cytoscape({
+                container: document.getElementById('cy'),
+                boxSelectionEnabled: false,
+                
+                // Define the elements (nodes and edges)
+                elements: {
+                    nodes: [
+                        { data: { id: 'eaagents', label: 'Enterprise Agents' } },
+                        { data: { id: 'tests', label: "Tests" } },
+                        { data: { id: 'testtargets', label: "Test Targets" } },
+                        { data: { id: 'a', parent: 'eaagents', type: 'ea', label: 'Node A 1.1.1.1 (TEVA)', color: '#f15d22', shape: 'round-rectangle' } },
+                        { data: { id: 'b', parent: 'eaagents', type: 'ea', label: 'Node B 1.1.1.2 (TEVA)', color: '#f15d22', shape: 'round-rectangle' } },
+                        { data: { id: 'c', parent: 'tests', type: 'ea', label: 'Test Teams', color: '#00bceb', shape: 'round-rectangle' } },
+                        { data: { id: 'd', parent: 'testtargets', type: 'ea', label: 'Teams TR 1', color: '#74bf4b', shape: 'round-rectangle' } },
+                        { data: { id: 'e', parent: 'testtargets', type: 'ea', label: 'Teams TR 2', color: '#74bf4b', shape: 'round-rectangle' } }
+                    ],
+                    edges: [
+                        { data: { id: 'ab', source: 'a', target: 'c', label: 'AB' } },
+                        { data: { id: 'bc', source: 'b', target: 'c', label: 'BC' } },
+                        { data: { id: 'cd', source: 'c', target: 'd', label: 'CD' } },
+                        { data: { id: 'ce', source: 'c', target: 'e', label: 'CE' } }
+                    ]
+                },
+                
+                // Define the visual style with labels next to nodes
+                style: [
+                    {
+                        selector: 'node',
+                        style: {
+                            'background-color': 'data(color)',
+                            'shape': 'data(shape)',
+                            'label': 'data(label)',
+                            // Position the label to the right of the node
+                            //'text-halign': 'left',
+                            //'text-valign': 'center',
+                            "text-wrap": "wrap",
+                            //"text-max-width": 80,
+                            // Move the label outside the node
+                            //'text-margin-x': -15,
+                            'color': '#000',
+                            // Add a background to the label to make it more readable
+                            'text-background-color': '#fff',
+                            'text-background-opacity': 0.7,
+                            'text-background-padding': 3,
+                            'text-background-shape': 'roundrectangle',
+                            "edge-text-rotation": "autorotate",
+                            'text-justification': 'auto'
+                            //'width': 30,
+                            //'height': 30
+                        }
+                    },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'width': 3,
+                            'line-color': '#ccc',
+                            'target-arrow-color': '#ccc',
+                            //'target-arrow-shape': 'triangle',
+                            'curve-style': 'bezier',
+                            'label': 'data(label)',
+                            'text-rotation': 'autorotate',
+                            'text-margin-y': -10,
+                            'text-background-color': 'white',
+                            'text-background-opacity': 0.7,
+                            'text-background-padding': 2
+                        }
+                    },
+                    {
+                        selector: ':parent',
+                        css: {
+                          'text-valign': 'top',
+                          'text-halign': 'center',
+                          'shape': 'round-rectangle',
+                          'corner-radius': "10",
+                          'padding': 10
+                        }
+                    }
+                ],
+                
+                // Layout configuration
+                layout: {
+                    name: 'random'
+                }
+            });
+            cy.zoomingEnabled( true );
+            
+            // Add some interactivity
+            cy.on('tap', 'node', function(evt){
+                var node = evt.target;
+                console.log('Tapped node: ' + node.id());
+                alert('Clicked on: ' + node.data('label'));
+            });
+        });
+    </script>
+</body>
+</html>
