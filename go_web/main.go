@@ -9,8 +9,19 @@ import (
 	"encoding/json"
 	"strings"
 	"os"
+	//"github.com/gin-gonic/gin"
 )
 
+type TEVisSettings struct {
+	Version		string
+	Token		string
+	AID			string
+	Loglevel	string
+	GraphLook	string
+	GraphBrand	string
+	GraphDirection	string
+	ServerPort	string
+}
 
 type TETestDetail struct {
 	Interval        int       `json:"interval"`
@@ -141,21 +152,21 @@ type TELabels struct {
 	} `json:"tags"`
 }
 
-func getLabels (teAGT string, teAID string) TELabels {
+func getLabels (teVisSettings TEVisSettings) TELabels {
     slog.Debug("Getting ALL Tags/Labels...")
-	slog.Debug("Selected AID: "+teAID)
-	//teAGT = "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
+	slog.Debug("SETTINGS", "Used AID", teVisSettings.AID)
 	getData := map[string]string{
-		"Token": teAGT,
+		"Token": teVisSettings.Token,
 	}
 	// Getting TE Labels 
-	url := fmt.Sprintf("https://api.thousandeyes.com/v7/tags?expand=assignments&aid="+teAID)
+	url := fmt.Sprintf("https://api.thousandeyes.com/v7/tags?expand=assignments&aid="+teVisSettings.AID)
 	response := helper.GETrequest(url,getData)
 	//fmt.Println(response)
 	var teLabels TELabels
 	lines := []string{}
 	
 	json.Unmarshal([]byte(response), &teLabels)
+	slog.Debug("TAGS", "Tags received", len(teLabels.Tags))
 	for _, label := range teLabels.Tags {
 		lines = append(lines, label.Value)
 	}
@@ -164,21 +175,23 @@ func getLabels (teAGT string, teAID string) TELabels {
 }
 
 func getAccountGroups (token string) string {
-    slog.Debug("Getting ALL Account-Groups...")
+    slog.Debug("getAccountGroups", "Getting ALL Account-Groups...")
 	getData := map[string]string{
 		"Token": token,
 	}
 	// Getting TE Labels 
 	url := fmt.Sprintf("https://api.thousandeyes.com/v7/account-groups")
 	response := helper.GETrequest(url,getData)
-	fmt.Println(response)
+	//fmt.Println(response)
 	var teAGs TEAllAccountGroups
 	json.Unmarshal([]byte(response), &teAGs)
+	slog.Debug("getAccountGroups", "Account Groups received", len(teAGs.AccountGroups))
+
 	return response
 }
 
 func getAllTests(teAGT string, teAID string) TEAllTests{
-    slog.Debug("Getting ALL Tests...")
+    slog.Debug("getAllTests", "Getting ALL Tests...")
 
     getData := map[string]string{
 		"Token": teAGT,
@@ -191,14 +204,13 @@ func getAllTests(teAGT string, teAID string) TEAllTests{
     var teAllTests TEAllTests
     json.Unmarshal([]byte(response), &teAllTests)
 
-	slog.Debug("Received ALL Tests...")
+
+	slog.Debug("getAllTests", "CEA Tests received", len(teAllTests.Tests))
+	slog.Debug("getAllTests", "Received ALL Tests...")
     return teAllTests
 }
 
 func getTestDetails(testURL string, teAGT string) TETestDetail {
-   //fmt.Println("Getting Test Details...")
-   //slog.Debug(teAID)
-
     getData := map[string]string{
 		"Token": teAGT,
 	}
@@ -213,37 +225,32 @@ func getTestDetails(testURL string, teAGT string) TETestDetail {
     return teTestDetail
 }
 
-func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramidDirection string, graphBrandColors string, teAID string) ALLDiagrams {
-    slog.Debug("Creating Diagrams...")
+func createDiagrams(teLabels TELabels, teVisSettings TEVisSettings) ALLDiagrams {
     var allDiagrams ALLDiagrams
 
-    teAllTests := getAllTests(teAGT, teAID)
+    teAllTests := getAllTests(teVisSettings.Token, teVisSettings.AID)
 
+	slog.Debug("createDiagrams", "Creating Diagrams...")
 	for _, label := range teLabels.Tags {
-        //fmt.Println("Label: "+label.Value)
-
         lines := []string{}
 	    lines = append(lines, "---")
 	    lines = append(lines, "config:")
-	    lines = append(lines, "  look: "+mermaidLook)	
+	    lines = append(lines, "  look: "+teVisSettings.GraphLook)	
 	    lines = append(lines, "---")
-	    lines = append(lines, "graph "+meramidDirection)
+	    lines = append(lines, "graph "+teVisSettings.GraphDirection)
 
-		if(graphBrandColors == "thousandeyes"){
+		if(teVisSettings.GraphBrand == "thousandeyes"){
 			lines = append(lines, "classDef teAgent fill:#FB7C32,color:#fff,stroke:#FB7C32")
         	lines = append(lines, "classDef teTest fill:#0d274d,color:#fff,stroke:#0d274d")
         	lines = append(lines, "classDef teTarget fill:#dddddd,color:#0d274d,stroke:#0d274d")
 		}
-		if(graphBrandColors == "cisco2025"){
+		if(teVisSettings.GraphBrand == "cisco2025"){
 			lines = append(lines, "classDef teAgent fill:#FF9000,color:#fff,stroke:#FF9000")
         	lines = append(lines, "classDef teTest fill:#02C8FF,color:#07182D,stroke:#02C8FF")
         	lines = append(lines, "classDef teTarget fill:#0A60FF,color:#fff,stroke:#0A60FF")
 		}
 
-        
 		for _, assignedTest := range label.Assignments {
-			//fmt.Printf("Tests ID: %s\n", test.ID)
-
             for _, test := range teAllTests.Tests{
                 if(test.TestID == assignedTest.ID){
                     // Define the Tests
@@ -251,7 +258,7 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
 					mermaidTest = fmt.Sprintf("test_%s[\"**%s**<br>*Type: %s<br>Interval: %ds*\"]:::teTest", test.TestID, test.TestName, test.Type, test.Interval )
 					lines = append(lines, mermaidTest)
 
-                    teTestDetail := getTestDetails(test.Links.Self.Href, teAGT)
+                    teTestDetail := getTestDetails(test.Links.Self.Href, teVisSettings.Token)
 
                     // Define the Agents
                     mermaidAgent := ""
@@ -310,11 +317,14 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
             Diagram: diagram,
         })
 	}
-	slog.Debug("Diagrams created.")
+	slog.Debug("createDiagrams", "Diagrams created.")
 	return allDiagrams
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+
+	//tmpl, err := template.ParseGlob("footer.html")
+	//tmpl := template.Must(template.ParseGlob("templates/*.html"))
 	tmpl, err := template.ParseFiles("formTemplate.html")
     if err != nil {
         http.Error(w, "Error parsing template", http.StatusInternalServerError)
@@ -324,66 +334,10 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
     err = tmpl.Execute(w, nil)
     if err != nil {
         http.Error(w, "Error executing template", http.StatusInternalServerError)
+		fmt.Println(err)
         return
     }
-	slog.Debug("Form Page Template executed.")
-}
-
-func submitHandler(w http.ResponseWriter, r *http.Request) {
-    if r.Method != "POST" {
-        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-        return
-    }
-    
-    // Parse form data
-    err := r.ParseForm()
-    if err != nil {
-        http.Error(w, "Error parsing form", http.StatusBadRequest)
-        return
-    }
-    
-    // Get the input value
-    userInput := r.FormValue("userInput")
-	graphlook := r.FormValue("radioDefault")
-	graphDirection := r.FormValue("radioDirection")
-	graphBrandColors := r.FormValue("radioBrandColors")
-	userAID := r.FormValue("ag")
-    
-    // Log the input on server side
-    slog.Debug("User submitted: %s\n", userInput)
-    slog.Debug("Graph Look: %s\n", graphlook)
-    slog.Debug("Graph Direction: %s\n", graphDirection)
-    slog.Debug("Graph Brand: %s\n", graphBrandColors)
-
-	teLabels := getLabels(userInput, userAID)
-	allDiagrams := createDiagrams(teLabels, userInput, graphlook, graphDirection, graphBrandColors, userAID)
-
-	tmpl, err := template.ParseFiles("resultTemplate.html")
-    if err != nil {
-        http.Error(w, "Error parsing template", http.StatusInternalServerError)
-        return
-    }
-	//fmt.Println(allDiagrams)
-
-	data := struct {
-		UserInput string
-		UserAID string
-		Diagrams ALLDiagrams
-		Labels TELabels
-	}{
-		UserInput: userInput,
-		UserAID: userAID,
-		Diagrams: allDiagrams,
-		Labels: teLabels,
-	}
-
-    err = tmpl.Execute(w, data)
-    if err != nil {
-        http.Error(w, "Error executing result template", http.StatusInternalServerError)
-        return
-    }
-
-	slog.Debug("Result Page Template executed.")
+	slog.Debug("homeHandler", "Form Page Template executed.")
 }
 
 func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
@@ -404,8 +358,7 @@ func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
 	userInput := r.FormValue("token")
 
 	//userInput := "91bbe972-f931-446a-97e4-016797e5293a"
-    slog.Debug("API // AccountGroup Handler")
-	slog.Debug("Using Bearer", userInput)
+	slog.Debug("apiAccountGroupHandler", "Using Bearer", userInput)
 
 	response := getAccountGroups(userInput)
 
@@ -413,33 +366,54 @@ func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	teVisVersion := "0.2025.06.24.00"
+	var teVisSettings TEVisSettings
+	teVisSettings.GraphLook = "classic"
+	teVisSettings.GraphDirection = "LR"
+	teVisSettings.GraphBrand = "thousandeyes"
+
+	teVisSettings.Version = "0.2025.06.24.01"
+	teVisSettings.ServerPort = "8090"
+
 	logger := slog.New(slog.NewJSONHandler(os.Stderr,nil))
 	logger = slog.New(slog.NewJSONHandler(os.Stderr,&slog.HandlerOptions{Level: slog.LevelDebug}))
 	slog.SetDefault(logger)
-	slog.Debug("Application started - Verion: "+teVisVersion)
+	slog.Debug("main", "Application started - Verion", teVisSettings.Version)
 
 	mux := http.NewServeMux()
 
     // Register handlers
     mux.HandleFunc("GET /", homeHandler)
-    mux.HandleFunc("POST /submit", submitHandler)
 
-    mux.HandleFunc("GET /test", func(w http.ResponseWriter, r *http.Request) {
-		userInput := "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
-		teAID := "0"
-    	slog.Debug("Test Handler")
-		slog.Debug("Using Bearer", userInput)
+    mux.HandleFunc("POST /submit", func(w http.ResponseWriter, r *http.Request,){
+	    if r.Method != "POST" {
+	        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	        return
+	    }
+	
+	    // Parse form data
+	    err := r.ParseForm()
+	    if err != nil {
+	        http.Error(w, "Error parsing form", http.StatusBadRequest)
+	        return
+	    }
+	
+	    // Get the input value
+	    teVisSettings.Token = r.FormValue("userInput")
+		teVisSettings.GraphLook = r.FormValue("radioDefault")
+		teVisSettings.GraphDirection = r.FormValue("radioDirection")
+		teVisSettings.GraphBrand = r.FormValue("radioBrandColors")
+		teVisSettings.AID = r.FormValue("ag")
 
-		teLabels := getLabels(userInput, teAID)
-		allDiagrams := createDiagrams(teLabels, userInput, "classic", "LR", "thousandeyes", teAID)
+		slog.Debug("submitHandler", "Current teVis Settings:", teVisSettings)
 
-		tmpl, err := template.ParseFiles("testTemplate.html")
-    	if err != nil {
-    	    http.Error(w, "Error parsing template", http.StatusInternalServerError)
-    	    return
-    	}
-		//fmt.Println(allDiagrams)
+		teLabels := getLabels(teVisSettings)
+		allDiagrams := createDiagrams(teLabels, teVisSettings)
+
+		tmpl, err := template.ParseFiles("resultTemplate.html")
+	    if err != nil {
+	        http.Error(w, "Error parsing template", http.StatusInternalServerError)
+	        return
+	    }
 
 		data := struct {
 			UserInput string
@@ -447,18 +421,54 @@ func main() {
 			Diagrams ALLDiagrams
 			Labels TELabels
 		}{
-			UserInput: userInput,
-			UserAID: "12345678",
+			UserInput: teVisSettings.Token,
+			UserAID: teVisSettings.AID,
 			Diagrams: allDiagrams,
 			Labels: teLabels,
 		}
+
+	    err = tmpl.Execute(w, data)
+	    if err != nil {
+	        http.Error(w, "Error executing result template", http.StatusInternalServerError)
+	        return
+	    }
+
+		slog.Debug("submitHandler", "Result Page Template executed.")
+	})
+
+    mux.HandleFunc("GET /test", func(w http.ResponseWriter, r *http.Request) {
+		teVisSettings.Token = "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
+		teVisSettings.AID = "281474976718016"
+
+		slog.Debug("testHandler", "Current teVis Settings:", teVisSettings)
+
+		teLabels := getLabels(teVisSettings)
+		allDiagrams := createDiagrams(teLabels, teVisSettings)
+
+		tmpl, err := template.ParseFiles("testTemplate.html")
+    	if err != nil {
+    	    http.Error(w, "Error parsing template", http.StatusInternalServerError)
+    	    return
+    	}
+
+		data := struct {
+			UserInput string
+			UserAID string
+			Diagrams ALLDiagrams
+			Labels TELabels
+		}{
+			UserInput: teVisSettings.Token,
+			UserAID: teVisSettings.AID,
+			Diagrams: allDiagrams,
+			Labels: teLabels,
+		}
+
     	err = tmpl.Execute(w, data)
     	if err != nil {
     	    http.Error(w, "Error executing result template", http.StatusInternalServerError)
     	    return
     	}
 	})
-
 
     mux.HandleFunc("GET /api/accountgroups", apiAccountGroupHandler)
 
@@ -468,11 +478,11 @@ func main() {
 		fmt.Fprintf(w, "Token: %s", token)
 	})
     
-    slog.Debug("Server starting on :8090")
-    slog.Debug("Press Ctrl+C to stop the server")
+    slog.Debug("main", "Server starting on", teVisSettings.ServerPort)
+    slog.Debug("main", "Press Ctrl+C to stop the server", "")
 
     // Start server
-    if err := http.ListenAndServe(":8090", mux); err != nil {
+    if err := http.ListenAndServe(":"+teVisSettings.ServerPort, mux); err != nil {
 		slog.Error(err.Error())
 		return
 	}
