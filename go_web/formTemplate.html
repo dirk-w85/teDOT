@@ -61,12 +61,14 @@
                 <span class="visually-hidden">Loading...</span>
               </div>
             </div>
+
+        <br><br>
+        <div class="alert alert-info" role="alert">
+            It can take a few seconds (10-25s) for the result page to load when you click the <b>Submit</b>-Button. Just be patient!
+        </div>
             </div>
         </form>
-    </div>
-    <br><br>
-    <div class="alert alert-info" role="alert">
-        It can take a few seconds (10-25s) for the result page to load when you click the <b>Submit</b>-Button. Just be patient!
+
     </div>
 	</div>
     <script>
@@ -97,7 +99,7 @@ $(document).ready(function() {
               $("#ag").append('<option value="'+value.aid+'" class="dropdown-item">'+value.accountGroupName+'</option>');
               //console.log(key.aid + ": " + value);
             });       
-          
+
             $("#dropdown").removeClass('d-none');
             $("#graphSettings").removeClass('d-none');
             //$("#submitBtn").removeClass('disabled');

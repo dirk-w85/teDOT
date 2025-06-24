@@ -273,13 +273,17 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
                     }
 
 					// Connecting Tests to Test-Targets
-					mermaidTestTarget := "test_"+test.TestID+" -- tcp/1234 --> target_dummy>Test-Type not yet supported]:::teTarget"
+					mermaidTestTarget := "test_"+test.TestID+" -- unsupported --> target_dummy>Test-Type not yet supported in teVis]:::teTarget"
 
 					if(test.Type == "agent-to-server"){
 						mermaidTestTarget = fmt.Sprintf("test_%s -- %s --> srv_%s[\"%s\"]:::teTarget", test.TestID, test.Protocol, test.TestID, test.Server)
 					}
 
 					if(test.Type == "http-server"){
+						mermaidTestTarget = fmt.Sprintf("test_%s -- %s<br>Trace: %s --> srv_%s[\"<p>%s</p>\"]:::teTarget", test.TestID, test.Protocol, test.PathTraceMode, test.TestID, test.URL)
+					}
+
+					if(test.Type == "page-load"){
 						mermaidTestTarget = fmt.Sprintf("test_%s -- %s<br>Trace: %s --> srv_%s[\"<p>%s</p>\"]:::teTarget", test.TestID, test.Protocol, test.PathTraceMode, test.TestID, test.URL)
 					}
 
