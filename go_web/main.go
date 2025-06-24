@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"strings"
 	"os"
-	//"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 type TEVisSettings struct {
@@ -340,29 +340,15 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	slog.Debug("homeHandler", "Form Page Template executed.")
 }
 
-func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-        return
-    }
-    
-    // Parse form data
-    err := r.ParseForm()
-    if err != nil {
-        http.Error(w, "Error parsing form", http.StatusBadRequest)
-        return
-    }
-    
-    // Get the input value
-    //userInput := r.FormValue("userInput")
-	userInput := r.FormValue("token")
+func apiAccountGroupHandler(c *gin.Context) {   
+	userInput := c.Param("token")
 
 	//userInput := "91bbe972-f931-446a-97e4-016797e5293a"
 	slog.Debug("apiAccountGroupHandler", "Using Bearer", userInput)
+	//getAccountGroups(userInput)
 
-	response := getAccountGroups(userInput)
-
-	fmt.Fprintf(w, response)
+	c.String(http.StatusOK, getAccountGroups(userInput))
+    return
 }
 
 func main() {
@@ -375,68 +361,49 @@ func main() {
 	teVisSettings.ServerPort = "8090"
 
 	logger := slog.New(slog.NewJSONHandler(os.Stderr,nil))
-	logger = slog.New(slog.NewJSONHandler(os.Stderr,&slog.HandlerOptions{Level: slog.LevelDebug}))
+	//logger = slog.New(slog.NewJSONHandler(os.Stderr,&slog.HandlerOptions{Level: slog.LevelDebug}))
 	slog.SetDefault(logger)
 	slog.Debug("main", "Application started - Verion", teVisSettings.Version)
 
-	mux := http.NewServeMux()
+	router := gin.Default()
+  
+    slog.Debug("main", "Server starting on", teVisSettings.ServerPort)
+    slog.Debug("main", "Press Ctrl+C to stop the server", "")
 
-    // Register handlers
-    mux.HandleFunc("GET /", homeHandler)
+	// GIN - Templates
+	router.LoadHTMLGlob("templates/*")
 
-    mux.HandleFunc("POST /submit", func(w http.ResponseWriter, r *http.Request,){
-	    if r.Method != "POST" {
-	        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-	        return
-	    }
-	
-	    // Parse form data
-	    err := r.ParseForm()
-	    if err != nil {
-	        http.Error(w, "Error parsing form", http.StatusBadRequest)
-	        return
-	    }
-	
+	// GIN - Routes
+
+	router.GET("/", func(c *gin.Context) {
+        c.HTML(http.StatusOK, "formTemplate.html", gin.H{
+            "title":   "Gin HTML Templates",
+            "message": "Welcome to Gin templating!",
+        })
+    })
+
+	router.POST("/submit", func(c *gin.Context) {		
 	    // Get the input value
-	    teVisSettings.Token = r.FormValue("userInput")
-		teVisSettings.GraphLook = r.FormValue("radioDefault")
-		teVisSettings.GraphDirection = r.FormValue("radioDirection")
-		teVisSettings.GraphBrand = r.FormValue("radioBrandColors")
-		teVisSettings.AID = r.FormValue("ag")
+	    teVisSettings.Token = c.PostForm("userInput")
+		teVisSettings.GraphLook = c.PostForm("radioDefault")
+		teVisSettings.GraphDirection = c.PostForm("radioDirection")
+		teVisSettings.GraphBrand = c.PostForm("radioBrandColors")
+		teVisSettings.AID = c.PostForm("ag")
 
 		slog.Debug("submitHandler", "Current teVis Settings:", teVisSettings)
 
 		teLabels := getLabels(teVisSettings)
 		allDiagrams := createDiagrams(teLabels, teVisSettings)
 
-		tmpl, err := template.ParseFiles("resultTemplate.html")
-	    if err != nil {
-	        http.Error(w, "Error parsing template", http.StatusInternalServerError)
-	        return
-	    }
+        c.HTML(http.StatusOK, "resultTemplate.html", gin.H{
+            "UserInput":  teVisSettings.Token,
+            "UserAID": teVisSettings.AID,
+			"Diagrams": allDiagrams,
+			"Labels": teLabels,
+        })
+    })
 
-		data := struct {
-			UserInput string
-			UserAID string
-			Diagrams ALLDiagrams
-			Labels TELabels
-		}{
-			UserInput: teVisSettings.Token,
-			UserAID: teVisSettings.AID,
-			Diagrams: allDiagrams,
-			Labels: teLabels,
-		}
-
-	    err = tmpl.Execute(w, data)
-	    if err != nil {
-	        http.Error(w, "Error executing result template", http.StatusInternalServerError)
-	        return
-	    }
-
-		slog.Debug("submitHandler", "Result Page Template executed.")
-	})
-
-    mux.HandleFunc("GET /test", func(w http.ResponseWriter, r *http.Request) {
+	router.GET("/test", func(c *gin.Context) {	
 		teVisSettings.Token = "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
 		teVisSettings.AID = "281474976718016"
 
@@ -445,45 +412,22 @@ func main() {
 		teLabels := getLabels(teVisSettings)
 		allDiagrams := createDiagrams(teLabels, teVisSettings)
 
-		tmpl, err := template.ParseFiles("testTemplate.html")
-    	if err != nil {
-    	    http.Error(w, "Error parsing template", http.StatusInternalServerError)
-    	    return
-    	}
+        c.HTML(http.StatusOK, "resultTemplate.html", gin.H{
+            "UserInput":  teVisSettings.Token,
+            "UserAID": teVisSettings.AID,
+			"Diagrams": allDiagrams,
+			"Labels": teLabels,
+        })
+    })
 
-		data := struct {
-			UserInput string
-			UserAID string
-			Diagrams ALLDiagrams
-			Labels TELabels
-		}{
-			UserInput: teVisSettings.Token,
-			UserAID: teVisSettings.AID,
-			Diagrams: allDiagrams,
-			Labels: teLabels,
-		}
+	router.GET("/ping", func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{
+            "message": "pong",
+        })
+    })
 
-    	err = tmpl.Execute(w, data)
-    	if err != nil {
-    	    http.Error(w, "Error executing result template", http.StatusInternalServerError)
-    	    return
-    	}
-	})
+	router.GET("/api/accountgroups/:token", apiAccountGroupHandler)
 
-    mux.HandleFunc("GET /api/accountgroups", apiAccountGroupHandler)
-
-    mux.HandleFunc("GET /api/test/accountgroups/{token}", func(w http.ResponseWriter, r *http.Request) {
-		token := r.PathValue("token")
-		fmt.Fprintf(w, "TEST - Account Groups")
-		fmt.Fprintf(w, "Token: %s", token)
-	})
-    
-    slog.Debug("main", "Server starting on", teVisSettings.ServerPort)
-    slog.Debug("main", "Press Ctrl+C to stop the server", "")
-
-    // Start server
-    if err := http.ListenAndServe(":"+teVisSettings.ServerPort, mux); err != nil {
-		slog.Error(err.Error())
-		return
-	}
+	// Start server on port 8080
+    router.Run(":"+teVisSettings.ServerPort)
 }
