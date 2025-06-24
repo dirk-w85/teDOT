@@ -5,7 +5,7 @@ import (
     "html/template"    
 	"log/slog"
     "net/http"
-	"teDOTweb/helper"
+	"github.com/dirk-w85/golang-helper"
 	"encoding/json"
 	"strings"
 	"os"
@@ -424,53 +424,70 @@ func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, response)
 }
 
-func testHandler(w http.ResponseWriter, r *http.Request) {
-    //tmpl, err := template.New("form").ParseFiles("formTemplate.html")
-	userInput := "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
-	teAID := "0"
-    slog.Debug("Test Handler")
-	slog.Debug("Using Bearer", userInput)
-
-	teLabels := getLabels(userInput, teAID)
-	allDiagrams := createDiagrams(teLabels, userInput, "classic", "LR", "thousandeyes", teAID)
-
-	tmpl, err := template.ParseFiles("testTemplate.html")
-    if err != nil {
-        http.Error(w, "Error parsing template", http.StatusInternalServerError)
-        return
-    }
-	//fmt.Println(allDiagrams)
-
-	data := struct {
-		UserInput string
-		Diagrams ALLDiagrams
-		Labels TELabels
-	}{
-		UserInput: userInput,
-		Diagrams: allDiagrams,
-		Labels: teLabels,
-	}
-    err = tmpl.Execute(w, data)
-    if err != nil {
-        http.Error(w, "Error executing result template", http.StatusInternalServerError)
-        return
-    }
-}
-
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stderr,nil))
 	logger = slog.New(slog.NewJSONHandler(os.Stderr,&slog.HandlerOptions{Level: slog.LevelDebug}))
 	slog.SetDefault(logger)
 	slog.Debug("Application started - Verion: 0.2025.06.23.00")
+
+	mux := http.NewServeMux()
+
     // Register handlers
-    http.HandleFunc("/", homeHandler)
-    http.HandleFunc("/submit", submitHandler)
-    http.HandleFunc("/test", testHandler)
-    http.HandleFunc("/api/accountgroups", apiAccountGroupHandler)
+    mux.HandleFunc("GET /", homeHandler)
+    mux.HandleFunc("POST /submit", submitHandler)
+
+    mux.HandleFunc("GET /test", func(w http.ResponseWriter, r *http.Request) {
+		userInput := "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
+		teAID := "0"
+    	slog.Debug("Test Handler")
+		slog.Debug("Using Bearer", userInput)
+
+		teLabels := getLabels(userInput, teAID)
+		allDiagrams := createDiagrams(teLabels, userInput, "classic", "LR", "thousandeyes", teAID)
+
+		tmpl, err := template.ParseFiles("testTemplate.html")
+    	if err != nil {
+    	    http.Error(w, "Error parsing template", http.StatusInternalServerError)
+    	    return
+    	}
+		//fmt.Println(allDiagrams)
+
+		data := struct {
+			UserInput string
+			UserAID string
+			Diagrams ALLDiagrams
+			Labels TELabels
+		}{
+			UserInput: userInput,
+			UserAID: "12345678",
+			Diagrams: allDiagrams,
+			Labels: teLabels,
+		}
+    	err = tmpl.Execute(w, data)
+    	if err != nil {
+    	    http.Error(w, "Error executing result template", http.StatusInternalServerError)
+    	    return
+    	}
+	})
+
+
+    mux.HandleFunc("GET /api/accountgroups", apiAccountGroupHandler)
+
+    mux.HandleFunc("GET /api/test/accountgroups/{token}", func(w http.ResponseWriter, r *http.Request) {
+		token := r.PathValue("token")
+		fmt.Fprintf(w, "TEST - Account Groups")
+		fmt.Fprintf(w, "Token: %s", token)
+	})
     
     slog.Debug("Server starting on :8090")
     slog.Debug("Press Ctrl+C to stop the server")
-    
+
     // Start server
-    http.ListenAndServe(":8090", nil)
+    if err := http.ListenAndServe(":8090", mux); err != nil {
+		slog.Error(err.Error())
+		return
+	}
+
+
+    
 }
