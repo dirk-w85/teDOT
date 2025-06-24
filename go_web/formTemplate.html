@@ -89,16 +89,20 @@ $(document).ready(function() {
         var token = $("#userInput").val()
         $.getJSON("/api/accountgroups?token="+token, function(data, status){
           //alert("Data: " + data.accountGroups[0].aid+ "\nStatus: " + status);   
-          $.each(data.accountGroups, function(key, value) {
-            //alert(key+":"+value.aid)
-            $("#ag").append('<option value="'+value.aid+'" class="dropdown-item">'+value.accountGroupName+'</option>');
-            //console.log(key.aid + ": " + value);
-          });       
-
-          $("#dropdown").removeClass('d-none');
-          $("#graphSettings").removeClass('d-none');
-          //$("#submitBtn").removeClass('disabled');
-          $("#submitBtn").prop("disabled", false);
+          if(data.error){
+            alert(data.error+" : "+data.error_description)
+          }else{
+            $.each(data.accountGroups, function(key, value) {
+              //alert(key+":"+value.aid)
+              $("#ag").append('<option value="'+value.aid+'" class="dropdown-item">'+value.accountGroupName+'</option>');
+              //console.log(key.aid + ": " + value);
+            });       
+          
+            $("#dropdown").removeClass('d-none');
+            $("#graphSettings").removeClass('d-none');
+            //$("#submitBtn").removeClass('disabled');
+            $("#submitBtn").prop("disabled", false);
+        }
         });        
     });    
 });

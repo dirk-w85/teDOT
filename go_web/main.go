@@ -62,7 +62,6 @@ type TETestDetail struct {
 	} `json:"_links"`
 }
 
-
 type ALLDiagrams struct {
     Tags []struct {
         LabelID     string
@@ -123,7 +122,6 @@ type TEAllTests struct {
 	} `json:"tests"`
 }
 
-
 type TELabels struct {
 	Tags []struct {
 		ID          string    `json:"id"`
@@ -173,7 +171,7 @@ func getAccountGroups (token string) string {
 	// Getting TE Labels 
 	url := fmt.Sprintf("https://api.thousandeyes.com/v7/account-groups")
 	response := helper.GETrequest(url,getData)
-	//fmt.Println(response)
+	fmt.Println(response)
 	var teAGs TEAllAccountGroups
 	json.Unmarshal([]byte(response), &teAGs)
 	return response
@@ -226,12 +224,11 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
 
         lines := []string{}
 	    lines = append(lines, "---")
-//	    lines = append(lines, "title: "+label.Value)
 	    lines = append(lines, "config:")
-	    lines = append(lines, "  look: "+mermaidLook)		
-//	    lines = append(lines, "  htmlLabels: false")
+	    lines = append(lines, "  look: "+mermaidLook)	
 	    lines = append(lines, "---")
 	    lines = append(lines, "graph "+meramidDirection)
+
 		if(graphBrandColors == "thousandeyes"){
 			lines = append(lines, "classDef teAgent fill:#FB7C32,color:#fff,stroke:#FB7C32")
         	lines = append(lines, "classDef teTest fill:#0d274d,color:#fff,stroke:#0d274d")
@@ -249,8 +246,6 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
 
             for _, test := range teAllTests.Tests{
                 if(test.TestID == assignedTest.ID){
-                    //fmt.Printf("  Tests Self: %s\n", test.Links.Self.Href)
-
                     // Define the Tests
 					mermaidTest := ""
 					mermaidTest = fmt.Sprintf("test_%s[\"**%s**<br>*Type: %s<br>Interval: %ds*\"]:::teTest", test.TestID, test.TestName, test.Type, test.Interval )
@@ -277,9 +272,7 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
                         lines = append(lines, "agent_"+agent.AgentID+" --> test_"+test.TestID)
                     }
 
-
 					// Connecting Tests to Test-Targets
-
 					mermaidTestTarget := "test_"+test.TestID+" -- tcp/1234 --> target_dummy>Test-Type not yet supported]:::teTarget"
 
 					if(test.Type == "agent-to-server"){
@@ -299,9 +292,6 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
 					}
 
 					lines = append(lines, mermaidTestTarget)
-
-					
-
                 }
             }	        
 		}
@@ -321,7 +311,6 @@ func createDiagrams(teLabels TELabels, teAGT string, mermaidLook string, meramid
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-    //tmpl, err := template.New("form").ParseFiles("formTemplate.html")
 	tmpl, err := template.ParseFiles("formTemplate.html")
     if err != nil {
         http.Error(w, "Error parsing template", http.StatusInternalServerError)
@@ -361,10 +350,6 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
     slog.Debug("Graph Look: %s\n", graphlook)
     slog.Debug("Graph Direction: %s\n", graphDirection)
     slog.Debug("Graph Brand: %s\n", graphBrandColors)
-    
-    // Display result page
-    //tmpl, err := template.New("result").ParseFiles("resultTemplate.html")
-
 
 	teLabels := getLabels(userInput, userAID)
 	allDiagrams := createDiagrams(teLabels, userInput, graphlook, graphDirection, graphBrandColors, userAID)
@@ -387,6 +372,7 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 		Diagrams: allDiagrams,
 		Labels: teLabels,
 	}
+
     err = tmpl.Execute(w, data)
     if err != nil {
         http.Error(w, "Error executing result template", http.StatusInternalServerError)
@@ -397,8 +383,6 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
-    //tmpl, err := template.New("form").ParseFiles("formTemplate.html")
-
 	if r.Method != "GET" {
         http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
         return
@@ -425,10 +409,11 @@ func apiAccountGroupHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	teVisVersion := "0.2025.06.24.00"
 	logger := slog.New(slog.NewJSONHandler(os.Stderr,nil))
 	logger = slog.New(slog.NewJSONHandler(os.Stderr,&slog.HandlerOptions{Level: slog.LevelDebug}))
 	slog.SetDefault(logger)
-	slog.Debug("Application started - Verion: 0.2025.06.23.00")
+	slog.Debug("Application started - Verion: "+teVisVersion)
 
 	mux := http.NewServeMux()
 
@@ -487,7 +472,4 @@ func main() {
 		slog.Error(err.Error())
 		return
 	}
-
-
-    
 }
