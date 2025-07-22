@@ -10,7 +10,7 @@ $(document).ready(function() {
     // Show spinner and update button state
     $spinner.removeClass('d-none');
     //$buttonText.text('Loading...');
-    //$submitBtn.prop('disabled', true);
+    $submitBtn.prop('disabled', true);
   });
 
     

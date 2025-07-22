@@ -103,7 +103,10 @@
                 
                 // Layout configuration
                 layout: {
-                    name: 'random'
+                    name: 'circle',
+                    rows: 2,
+                    padding: 80 // Increased padding to accommodate external labels
+                    //gravity: 10
                 }
             });
             cy.zoomingEnabled( true );

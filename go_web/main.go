@@ -404,9 +404,6 @@ func main() {
     })
 
 	router.GET("/test", func(c *gin.Context) {	
-		teVisSettings.Token = "01ab-cf1d5e79-16d3-4293-8235-5e196aeac6c1"
-		teVisSettings.AID = "281474976718016"
-
 		slog.Debug("testHandler", "Current teVis Settings:", teVisSettings)
 
 		teLabels := getLabels(teVisSettings)

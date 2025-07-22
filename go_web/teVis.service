@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/usr/local/bin/teVis/
+WorkingDirectory=/usr/local/bin/teVis
 ExecStart=/usr/local/bin/teVis/teVis-web
 Restart=on-failure
 
